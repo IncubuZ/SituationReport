@@ -1,0 +1,57 @@
+/* CSS Document */
+
+#map {
+	width: 320px; 
+	height: 240px; 
+	border: 2px solid #666;
+ 	display: block;
+ 	visibility: hidden; 
+	margin: 1.0em auto; 
+}
+@media all and (min-width: 800px){
+/*	h1 { color: #0f0; }  FOR TESTING */
+	h2 {
+		border-bottom: 2px solid #b3b3
+		b3;
+		font-size: 2.0em;
+		margin: 0.6em 0px 0.8em;
+		font-weight: bold;		
+	}
+	.api-div {
+ 		font-size: 1.2em;
+	}
+	blockquote { 
+		padding-left: 20px;
+	}
+	blockquote p {
+		font-size: .9em;
+	}
+	.content-secondary {
+		width: 30%;
+	}
+	.content-primary {
+		width: 60%;
+		padding-right: 1%;
+	}	
+ 	.type-interior .content-primary {
+		padding-right: 5%;
+	} 
+	.footer-docs {
+		display: block;
+	}
+	ul #listdivider {
+		padding-top: 1.0em;
+		padding-bottom: 1.0em;
+	}
+	#deviceinfo {
+		width: 85%;
+	}
+	#cameraImage {
+		width:400px;
+		height:300px;
+    }
+    #map {
+		width: 390px; 
+		height: 310px; 
+	}
+}
