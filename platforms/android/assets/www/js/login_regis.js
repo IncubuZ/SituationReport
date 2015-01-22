@@ -1,3 +1,4 @@
+var serviceURL = localStorage.serviceURL;
 var userState = false;
 var passState = false;
 var emailState = false;
@@ -5,24 +6,13 @@ var realNameState = false;
 var realSNameState = false;
 var userMsgD = " สามารถใช้อักษร a-z,0-9,_,- ความยาว 4-15 ตัว ";
 var passMsgD = " สามารถใช้อักษร a-Z,0-9,_,- ความยาว 5-15 ตัว ";
- $(document).bind('mobileinit', function() {
-            $(document).on('tap', function(e) {
-                $('.activeOnce').removeClass($.mobile.activeBtnClass);
-            });
-        });
-$(document).ready(function() {
-	
-	FastClick.attach(document.body);
-	console.log("FastClickReady");
-	$("#loginPage").on("pageinit", loginBindEvent);
-	$("#regisPage").on("pageinit", regisBindEvent);
-	 document.addEventListener("deviceready", deviceReady, true);
-});
-function loginBindEvent(){
-	console.log("pageinit run");
-		$("#loginForm").on("submit",handleLogin);
-	}
-function regisBindEvent(){
+//////////////////////////////////////////////////////////////////////////////
+function loginBindEvent() {
+	$("#loginForm").on("submit", handleLogin);
+	console.log("handleLogin run");
+}
+//////////////////////////////////////////////////////////////////////////////
+function regisBindEvent() {
 	validAll();
 	$("#userInputRegis").on('focusout', checkUsedName).on('focusin', function() {
 		$("#pMsgU").text(userMsgD).css("color", "black");
@@ -31,7 +21,7 @@ function regisBindEvent(){
 		function() {
 			$("#pMsgP").text(passMsgD).css("color", "black");
 		});
-	$("#repassInputRegis").on('focusout', recheckPass).on('focusout', checkUsedName);
+	$("#repassInputRegis").on('focusout', recheckPass);
 	$("#emailInputRegis").on('focusout', checkEmail);
 	$("#nameInput").on('focusout', function() {
 		if ($("#nameInput").val()) {
@@ -52,53 +42,157 @@ function regisBindEvent(){
 		}
 	});
 	$("#sumitBtn").on("click", handleRegis);
-	
-	}
-
-
-function handleLogin() {
-    var form = $("#loginForm");    
-	 var url = 'http://situationreport.meximas.com/ray.php';  // you'll want to change
-    //disable the button so we can't resubmit while we wait
-    $("#submitButton",form).attr("disabled","disabled");
-    var u = $("#username", form).val();
-    var p = $("#password", form).val();
-    if(u != '' && p!= '') {
-        
-		$.ajax({
-                type: 'GET',
-                url: url,
-                contentType: "application/json",
-                dataType: 'jsonp',
-                data: {username:u,password:p},
-                crossDomain: true,
-                success: function(res) {
-                     if(res.success == true) {
-                		//store
-               			window.localStorage["username"] = u;
-                		window.localStorage["password"] = p;             
-                		//window.location.replace(some.html);
-						window.open("home.html",'_self');
-            		} else {
-                		navigator.notification.alert("Your login failed", function() {});
-           		}
-				$("#submitButton").removeAttr("disabled");									
-                },
-                error: function(e) {
-                    console.log(e.message);
-                },
-                complete: function(e) {
-                    console.log("message");
-                }
-            });
-		
-		
-    } else {
-        navigator.notification.alert("You must enter a username and password", function() {});
-       $("#submitButton").removeAttr("disabled");
-    }
-    return false;
 }
+//////////////////////////////////////////////////////////////////////////////
+function handleLogin() {
+	var form = $("#loginForm");
+	var url = serviceURL + 'handle_login.php'; // you'll want to change
+	//disable the button so we can't resubmit while we wait
+	loadingShow("#contentLogin");
+	$("#submitButton", form).attr("disabled", "disabled");
+	var u = $("#username", form).val();
+	var p = $("#password", form).val();
+	if (u !== '' && p !== '') {
+		$.ajax({
+			type: 'GET',
+			url: url,
+			contentType: "application/json",
+			dataType: 'jsonp',
+			data: {
+				username: u,
+				password: p
+			},
+			crossDomain: true,
+			timeout: 10000,
+			success: function(res) {
+				//var user = res.item;
+				console.log(res);
+				console.log(!jQuery.isEmptyObject(res));
+				if (!jQuery.isEmptyObject(res)) {
+					//store
+					console.log(res.user_id);
+					window.localStorage.username = u;
+					window.localStorage.password = p;
+					window.localStorage.userId = res.user_id;
+					window.localStorage.userRName = res.user_rname;
+					window.localStorage.userSurname = res.user_surname;
+					window.localStorage.userEmail = res.user_email;
+					window.localStorage.userBdate = res.user_bdate;
+					window.localStorage.userGender = res.user_gender;
+					window.localStorage.userImageUrl = res.user_imageUrl;
+					window.localStorage.userStatus = res.user_status;
+					//window.localStorage.userId = res.user_id;
+					//window.location.replace(some.html);
+					//window.open("home.html", '_self');
+					 $(form)[0].reset();
+					$.mobile.changePage("#homePage");
+				} else {
+					navigator.notification.alert("Your login failed", function() {});
+				}
+			
+				$("#submitButton").removeAttr("disabled");
+				loadingHide("#contentLogin");
+			},
+			error: function(e) {
+				console.log(e.message);
+				navigator.notification.alert("ERROR กรุณาตรวจสอบการเชื่อมต่อ อินเตอร์เน็ต ");
+				loadingHide("#contentLogin");
+			},
+			complete: function(e) {
+				console.log("message");
+				$("#submitButton").removeAttr("disabled");
+				loadingHide("#contentLogin");
+			}
+		});
+	} else {
+		navigator.notification.alert("You must enter a username and password", function() {});
+		
+		$("#submitButton").removeAttr("disabled");
+		loadingHide("#contentLogin");
+	}
+	return false;
+}
+//////////////////////////////////////////////////////////////////////////////
+function handleRegis() {
+	var form = $("#regisForm");
+	var url = serviceURL + 'regisUser.php';
+	$("#sumitBtn").addClass("ui-state-disabled");
+	var u = $("#userInputRegis", form).val();
+	var p = $("#passInputRegis", form).val();
+	var e = $("#emailInputRegis", form).val();
+	var rn = $("#nameInput", form).val();
+	var rsn = $("#surnameInput", form).val();
+	var g = $("#genderSelect", form).val();
+	loadingShow("#contentRegis");
+	if (validAll()) {
+		$.ajax({
+			type: 'GET',
+			url: url,
+			contentType: "application/json",
+			dataType: 'jsonp',
+			data: {
+				username: u,
+				password: p,
+				email: e,
+				realname: rn,
+				realsname: rsn,
+				gender: g
+			},
+			crossDomain: true,
+			timeout: 10000,
+			success: function(res) {
+				if (!jQuery.isEmptyObject(res)) {
+					console.log(res.user_id);
+					window.localStorage.username = u;
+					window.localStorage.password = p;
+					window.localStorage.userId = res.user_id;
+					window.localStorage.userRName = res.user_rname;
+					window.localStorage.userSurname = res.user_surname;
+					window.localStorage.userEmail = res.user_email;
+					window.localStorage.userBdate = res.user_bdate;
+					window.localStorage.userGender = res.user_gender;
+					window.localStorage.userImageUrl = res.user_imageUrl;
+					window.localStorage.userStatus = res.user_status;
+					//window.localStorage.userId = res.user_id;
+					//window.location.replace(some.html);
+					//window.open("home.html", '_self');
+					$(form)[0].reset();
+					$("#pMsgU").text("");
+					$("#pMsgP").text("");
+					$("#pMsgE").text("");
+					userState = false;
+					passState = false;
+					emailState = false;
+					realNameState = false;
+					realSNameState = false;
+					validAll();
+					$.mobile.changePage("#homePage");
+				} else {
+					navigator.notification.alert("Your login failed", function() {});
+					
+				}
+				
+				$("#sumitBtn").removeClass("ui-state-disabled");
+				loadingHide("#contentRegis");
+			},
+			error: function(e) {
+				console.log(e.message);
+				navigator.notification.alert("ERROR กรุณาตรวจสอบการเชื่อมต่อ อินเตอร์เน็ต ");
+				$("#sumitBtn").removeClass("ui-state-disabled");
+				loadingHide("#contentRegis");
+			},
+			complete: function(e) {
+				console.log("message");
+			}
+		});
+	} else {
+		navigator.notification.alert("You must fill form");
+		$("#submitButton").removeAttr("disabled");
+		loadingHide("#contentRegis");
+	}
+	return false;
+}
+//////////////////////////////////////////////////////////////////////////////
 function dateNow() {
 	var now = new Date();
 	var day = ("0" + now.getDate()).slice(-2);
@@ -106,15 +200,7 @@ function dateNow() {
 	var today = now.getFullYear() + "-" + (month) + "-" + (day);
 	$('#datePicker').val(today);
 }
-function loadingShow() {
-	$.mobile.loading('show');
-	$("#regisForm > *").attr("disabled", true).addClass("ui-state-disabled");
-}
-function loadingHide() {
-	$.mobile.loading('hide');
-	$("#regisForm > *").attr("disabled", false).removeClass("ui-state-disabled");
-}
-
+//////////////////////////////////////////////////////////////////////////////
 function validAll() {
 	if (userState === true && passState === true && emailState === true && realNameState === true &&
 		realSNameState === true) {
@@ -125,6 +211,7 @@ function validAll() {
 		return false;
 	}
 }
+//////////////////////////////////////////////////////////////////////////////
 function checkUsernameRegEx(username) {
 	var pattern = /^[a-z0-9_-]{4,15}$/;
 	if (pattern.test(username)) {
@@ -133,7 +220,7 @@ function checkUsernameRegEx(username) {
 		return false;
 	}
 }
-
+//////////////////////////////////////////////////////////////////////////////
 function checkEmailRegEx(email) {
 	var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/;
 	if (pattern.test(email)) {
@@ -142,7 +229,7 @@ function checkEmailRegEx(email) {
 		return false;
 	}
 }
-
+//////////////////////////////////////////////////////////////////////////////
 function checkPasswordRegEx(password) {
 	var pattern = /^[a-zA-Z0-9_-]{5,15}$/;
 	if (pattern.test(password)) {
@@ -151,10 +238,12 @@ function checkPasswordRegEx(password) {
 		return false;
 	}
 }
+//////////////////////////////////////////////////////////////////////////////
 function checkUsedName() {
 	var form = $("#regisForm");
 	var u = $("#userInputRegis").val();
-	var url = 'http://situationreport.meximas.com/checkUsedName.php';
+	
+	var url = serviceURL + 'checkUsedName.php';
 	if (u !== '') {
 		if (checkUsernameRegEx(u) === true) {
 			$.ajax({
@@ -201,7 +290,7 @@ function checkUsedName() {
 	}
 	return false;
 }
-
+//////////////////////////////////////////////////////////////////////////////
 function checkPass() {
 	var form = $("#regisForm");
 	var p = $("#passInputRegis", form).val();
@@ -221,7 +310,7 @@ function checkPass() {
 		$("#pMsgP").text(" กรุณากรอก Password ").css("color", "red");
 	}
 }
-
+//////////////////////////////////////////////////////////////////////////////
 function recheckPass() {
 	var form = $("#regisForm");
 	var p = $("#passInputRegis", form).val();
@@ -248,10 +337,11 @@ function recheckPass() {
 		$("#pMsgP").text(" กรุณากรอก Password อีกครั้ง").css("color", "red");
 	}
 }
+//////////////////////////////////////////////////////////////////////////////
 function checkEmail() {
 	var form = $("#regisForm");
 	var e = $("#emailInputRegis", form).val();
-	var url = 'http://situationreport.meximas.com/checkUsedEmail.php';
+	var url = serviceURL + 'checkUsedEmail.php';
 	if (e !== '') {
 		if (checkEmailRegEx(e) === true) {
 			$.ajax({
@@ -297,72 +387,21 @@ function checkEmail() {
 	}
 	return false;
 }
-function handleRegis() {
-	var form = $("#regisForm");
-	$("#sumitBtn").addClass("ui-state-disabled");
-	var u = $("#userInputRegis", form).val();
-	var p = $("#passInputRegis", form).val();
-	var e = $("#emailInputRegis", form).val();
-	var rn = $("#nameInput", form).val();
-	var rsn = $("#surnameInput", form).val();
-	var g = $("#genderSelect", form).val();
-	var url = 'http://situationreport.meximas.com/regisUser.php';
-	if (validAll()) {
-		$.ajax({
-			type: 'GET',
-			url: url,
-			contentType: "application/json",
-			dataType: 'jsonp',
-			data: {
-				username: u,
-				password: p,
-				email: e,
-				realname: rn,
-				realsname: rsn,
-				gender: g
-			},
-			crossDomain: true,
-			success: function(res) {
-				if (res.success === true) {
-					window.localStorage["username"] = u;
-					window.localStorage["password"] = p;
-					window.open("home.html", '_self');
-				} else {
-					navigator.notification.alert("Your login failed", function() {});
-				}
-				$("#sumitBtn").removeClass("ui-state-disabled");
-			},
-			error: function(e) {
-				console.log(e.message);
-			},
-			complete: function(e) {
-				console.log("message");
-			}
-		});
-	} else {
-		navigator.notification.alert("You must fill form");
-		$("#submitButton").removeAttr("disabled");
-	}
-	return false;
-}
+//////////////////////////////////////////////////////////////////////////////
 
-function deviceReady() {
-	//navigator.splashscreen.hide();
-    document.addEventListener("backbutton", function(e){
-       if($.mobile.activePage.is('#mainPage')){
-           e.preventDefault();
-           navigator.app.exitApp();
-		   
-       }
-       else {
-           navigator.app.backHistory()
-       }
-    }, false);
-	
-	
-	console.log("deviceReady");
-	navigator.splashscreen.hide();
-	//$.mobile.changePage("#loginPage");
-	
-	
+function logOut() {
+	localStorage.removeItem("username");
+	localStorage.removeItem("password");
+	localStorage.removeItem("userId");
+	localStorage.removeItem("userRName");
+	localStorage.removeItem("userSurname");
+	localStorage.removeItem("userEmail");
+	localStorage.removeItem("userBdate");
+	localStorage.removeItem("userGender");
+	localStorage.removeItem("userImageUrl");
+	localStorage.removeItem("userStatus");
+	console.log("LogOut");
+	$.mobile.changePage("#loginRegisPage");
+	//window.open("login_regis.html",'_self');
 }
+//////////////////////////////////////////////////////////////////////////////

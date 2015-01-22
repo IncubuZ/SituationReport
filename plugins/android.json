@@ -25,10 +25,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.GeoBroker\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
                             "count": 1
                         },
@@ -39,6 +35,14 @@
                         {
                             "xml": "<feature name=\"Home\"><param name=\"android-package\" value=\"org.apache.cordova.home.Home\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.GeoBroker\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -48,7 +52,7 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 9
+                            "count": 10
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
@@ -64,6 +68,10 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS\" />",
                             "count": 1
                         }
                     ]
@@ -84,9 +92,6 @@
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.project.situationreport"
         },
-        "org.apache.cordova.geolocation": {
-            "PACKAGE_NAME": "com.project.situationreport"
-        },
         "org.apache.cordova.dialogs": {
             "PACKAGE_NAME": "com.project.situationreport"
         },
@@ -94,6 +99,12 @@
             "PACKAGE_NAME": "com.project.situationreport"
         },
         "org.apache.cordova.home": {
+            "PACKAGE_NAME": "com.project.situationreport"
+        },
+        "org.apache.cordova.file-transfer": {
+            "PACKAGE_NAME": "com.project.situationreport"
+        },
+        "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "com.project.situationreport"
         }
     },

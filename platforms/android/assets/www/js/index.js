@@ -1,49 +1,95 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+//localStorage.serviceURL = "http://situationreport.meximas.com/services/";
+var serviceURL = localStorage.serviceURL;
+$(document).ready(function() {
+	FastClick.attach(document.body);
+	console.log("FastClickReady");
+	loadingShow("#firstPage");
+	document.addEventListener("deviceready", deviceReady, true);
+	$("#loginPage").on("pagecreate", loginBindEvent);
+	$("#regisPage").on("pagecreate", regisBindEvent);
+	//$("#profilePage").on("pagecreate", getUserDetail);
+	$("#editProfilePage").on("pagecreate", editUserBindEvent);
+	$("#addReportPage").on("pagecreate", addReportBindEvent);
+	loadFeed();
+	
+});
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+function checkPreAuth() {
+	console.log("checkPreAuth");
+	if (window.localStorage.username !== undefined && window.localStorage.password !== undefined) {
+		$.mobile.changePage("#homePage");
+		loadingHide();
+		navigator.splashscreen.hide();
+	} else {
+		$.mobile.changePage("#loginRegisPage");
+		loadingHide();
+		navigator.splashscreen.hide();
+	}
+}
 
-        console.log('Received Event: ' + id);
-    }
-};
+function loadingShow(desti) {
+	$.mobile.loading('show');
+	$(desti).hide();
+}
+
+function loadingHide(desti) {
+	$.mobile.loading('hide');
+	$(desti).show();
+}
+function onBackbutton(e){
+	if ($.mobile.activePage.is('#loginRegisPage')) {
+			e.preventDefault();
+			navigator.app.exitApp();
+		} 
+		else if($.mobile.activePage.is('#homePage')){
+           e.preventDefault();
+		   navigator.home.home(function(){console.info("Successfully launched home intent");}, 
+			   				   function(){console.error("Error launching home intent");});
+       }
+       else {
+           navigator.app.backHistory()
+       }
+	
+	}
+function deviceReady() {
+	checkPreAuth();
+	document.addEventListener("backbutton", onBackbutton, false);
+	 console.log("navigator.geolocation works well");
+}
+
+function loadFeed(){
+	
+	var output = $('#contentHome');
+	output.empty();
+	var butt = '<a class="ui-btn ui-mini ui-icon-check ui-btn-icon-left ui-corner-all ui-btn-b activeOnce" href="#" id="loadFeedBtn" data-transition="none" onClick="loadFeed();">loadFeeds</a>';
+			output.append(butt);
+	var url = serviceURL + 'loadFeed.php';
+	$.ajax({
+		url: url,
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 10000,
+		success: function(data, status){
+			console.log(status);
+			console.log(data);
+			
+			$.each(data, function(i,item){ 
+				var feed = '<h1>'+item.report_by+'</h1>'
+				+ '<p>'+item.report_id+'<br>'
+				+ '<p>'+item.report_title+'<br>'
+				+ '<p>'+item.report_content+'<br>'
+				+ '<p>'+item.report_date+'<br>'
+				+ '<p>'+item.report_lat+'<br>'
+				+ '<p>'+item.report_long+'<br>'
+				+ '<p>'+item.report_locat+'<br>'
+				+ item.report_imgUrl+'</p>';
+
+				output.append(feed);
+			});
+		},
+		error: function(){
+		   output.text('There was an error loading the data.');
+		}
+	});
+	
+	}
