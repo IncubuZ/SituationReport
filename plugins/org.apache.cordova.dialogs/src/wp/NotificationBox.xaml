@@ -52,7 +52,11 @@
             
             <ScrollViewer x:Name="ContentScroller"
                           Grid.Row="1"
+<<<<<<< HEAD
                           MinHeight="120"
+=======
+                          MinHeight="240"
+>>>>>>> origin/master
                           Margin="10,10">
                 <StackPanel Orientation="Vertical">
                     <TextBlock x:Name="SubTitle" 

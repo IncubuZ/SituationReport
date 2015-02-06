@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
        Licensed to the Apache Software Foundation (ASF) under one
        or more contributor license agreements.  See the NOTICE file
@@ -16,6 +17,8 @@
        specific language governing permissions and limitations
        under the License.
  */
+=======
+>>>>>>> origin/master
 package org.apache.cordova.file;
 
 import java.io.File;
@@ -37,12 +40,24 @@ public abstract class Filesystem {
 		public void handleData(InputStream inputStream, String contentType) throws IOException;
 	}
 
+<<<<<<< HEAD
+=======
+	public static JSONObject makeEntryForPath(String path, String fsName, Boolean isDir)
+			throws JSONException {
+		return makeEntryForPath(path, fsName, isDir, null);
+	}
+
+>>>>>>> origin/master
 	public static JSONObject makeEntryForPath(String path, String fsName, Boolean isDir, String nativeURL)
 			throws JSONException {
         JSONObject entry = new JSONObject();
 
         int end = path.endsWith("/") ? 1 : 0;
+<<<<<<< HEAD
         String[] parts = path.substring(0,path.length()-end).split("/+");
+=======
+        String[] parts = path.substring(0,path.length()-end).split("/");
+>>>>>>> origin/master
         String fileName = parts[parts.length-1];
         entry.put("isFile", !isDir);
         entry.put("isDirectory", isDir);
@@ -54,11 +69,23 @@ public abstract class Filesystem {
         // Backwards compatibility
         entry.put("filesystem", "temporary".equals(fsName) ? 0 : 1);
 
+<<<<<<< HEAD
         if (isDir && !nativeURL.endsWith("/")) {
             nativeURL += "/";
         }
     	entry.put("nativeURL", nativeURL);
         return entry;
+=======
+        if (nativeURL != null) {
+        	entry.put("nativeURL", nativeURL);
+        }
+        return entry;
+
+    }
+
+    public static JSONObject makeEntryForURL(LocalFilesystemURL inputURL, Boolean isDir) throws JSONException {
+        return makeEntryForURL(inputURL, isDir, null);
+>>>>>>> origin/master
     }
 
     public static JSONObject makeEntryForURL(LocalFilesystemURL inputURL, Boolean isDir, String nativeURL) throws JSONException {
@@ -82,8 +109,13 @@ public abstract class Filesystem {
 		LocalFilesystemURL newURL = new LocalFilesystemURL(inputURL.URL);
 	
 		if (!("".equals(inputURL.fullPath) || "/".equals(inputURL.fullPath))) {
+<<<<<<< HEAD
 			String dirURL = inputURL.fullPath.replaceAll("/+$", "");
 			int lastPathStartsAt = dirURL.lastIndexOf('/')+1;
+=======
+			int end = inputURL.fullPath.endsWith("/") ? 1 : 0;
+	        int lastPathStartsAt = inputURL.fullPath.lastIndexOf('/', inputURL.fullPath.length()-end)+1;
+>>>>>>> origin/master
 			newURL.fullPath = newURL.fullPath.substring(0,lastPathStartsAt);
 		}
 		return getEntryForLocalURL(newURL);
@@ -144,7 +176,11 @@ public abstract class Filesystem {
                 // Delete original
                 srcFs.removeFileAtLocalURL(srcURL);
             }
+<<<<<<< HEAD
             return getEntryForLocalURL(destination);
+=======
+            return makeEntryForURL(destination, false);
+>>>>>>> origin/master
         } else {
             throw new NoModificationAllowedException("Cannot move file at source URL");
         }

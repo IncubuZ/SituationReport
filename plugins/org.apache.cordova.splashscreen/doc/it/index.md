@@ -54,14 +54,23 @@ Dove foo è il nome del file splashscreen, preferibilmente un file 9 patch. Assi
 
 Respingere la schermata iniziale.
 
+<<<<<<< HEAD
     Navigator.SplashScreen.Hide();
+=======
+    navigator.splashscreen.hide();
+>>>>>>> origin/master
     
 
 ### BlackBerry 10, WP8, iOS Quirk
 
 Il `config.xml` di file `AutoHideSplashScreen` impostazione deve essere `false` . Per ritardare nascondendo la schermata iniziale per due secondi, aggiungere un timer ad esempio nel `deviceready` gestore di evento:
 
+<<<<<<< HEAD
         setTimeout(function() {navigator.splashscreen.hide();
+=======
+        setTimeout(function() {
+            navigator.splashscreen.hide();
+>>>>>>> origin/master
         }, 2000);
     
 
@@ -69,7 +78,11 @@ Il `config.xml` di file `AutoHideSplashScreen` impostazione deve essere `false` 
 
 Visualizza la schermata iniziale.
 
+<<<<<<< HEAD
     Navigator.SplashScreen.Show();
+=======
+    navigator.splashscreen.show();
+>>>>>>> origin/master
     
 
 L'applicazione non può chiamare `navigator.splashscreen.show()` fino a quando ha iniziato l'app e il `deviceready` ha generato l'evento. Ma poiché in genere la schermata iniziale è destinata ad essere visibile prima app ha iniziato, che sembrerebbe per sconfiggere lo scopo della schermata iniziale. Fornendo qualche configurazione in `config.xml` verrà automaticamente `show` la schermata iniziale subito dopo il lancio dell'app e prima che completamente ha iniziato e ha ricevuto il `deviceready` evento. Per ulteriori informazioni su facendo questa configurazione, vedere [icone e schermate iniziali][1] . Per questo motivo, è improbabile che dovete chiamare `navigator.splashscreen.show()` per rendere la schermata visibile per avvio di app.

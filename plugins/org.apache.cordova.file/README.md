@@ -19,4 +19,8 @@
 
 # org.apache.cordova.file
 
+<<<<<<< HEAD
 Plugin documentation: [doc/index.md](doc/index.md)
+=======
+Plugin documentation: [doc/index.md](doc/index.md)
+>>>>>>> origin/master

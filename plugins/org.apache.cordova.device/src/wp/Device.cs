@@ -35,13 +35,24 @@ namespace WPCordovaClassLib.Cordova.Commands
         public void getDeviceInfo(string notused)
         {
 
+<<<<<<< HEAD
             string res = String.Format("\"name\":\"{0}\",\"platform\":\"{1}\",\"uuid\":\"{2}\",\"version\":\"{3}\",\"model\":\"{4}\"",
                                         this.name,
+=======
+            string res = String.Format("\"name\":\"{0}\",\"cordova\":\"{1}\",\"platform\":\"{2}\",\"uuid\":\"{3}\",\"version\":\"{4}\",\"model\":\"{5}\"",
+                                        this.name,
+                                        this.cordova,
+>>>>>>> origin/master
                                         this.platform,
                                         this.uuid,
                                         this.version,
                                         this.model);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
             res = "{" + res + "}";
             //Debug.WriteLine("Result::" + res);
             DispatchCommandResult(new PluginResult(PluginResult.Status.OK, res));
@@ -65,6 +76,18 @@ namespace WPCordovaClassLib.Cordova.Commands
             }
         }
 
+<<<<<<< HEAD
+=======
+        public string cordova
+        {
+            get
+            {
+                // TODO: should be able to dynamically read the Cordova version from somewhere...
+                return "3.0.0";
+            }
+        }
+
+>>>>>>> origin/master
         public string platform
         {
             get

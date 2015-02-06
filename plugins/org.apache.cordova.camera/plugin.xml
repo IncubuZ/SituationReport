@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <!--
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
@@ -23,6 +24,13 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     id="org.apache.cordova.camera"
     version="0.3.4">
+=======
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="org.apache.cordova.camera"
+    version="0.2.8">
+>>>>>>> origin/master
     <name>Camera</name>
     <description>Cordova Camera Plugin</description>
     <license>Apache 2.0</license>
@@ -56,7 +64,11 @@
           <runs />
         </js-module>
     </platform>  
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/master
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
@@ -126,7 +138,10 @@
              <feature name="Camera">
                  <param name="ios-package" value="CDVCamera" />
              </feature>
+<<<<<<< HEAD
              <preference name="CameraUsesGeolocation" value="false" />
+=======
+>>>>>>> origin/master
          </config-file>
 
          <js-module src="www/ios/CameraPopoverHandle.js" name="CameraPopoverHandle">
@@ -136,6 +151,7 @@
          <header-file src="src/ios/CDVCamera.h" />
          <source-file src="src/ios/CDVCamera.m" />
          <header-file src="src/ios/CDVJpegHeaderWriter.h" />
+<<<<<<< HEAD
          <source-file src="src/ios/CDVJpegHeaderWriter.m" />
          <header-file src="src/ios/CDVExif.h" />
          <framework src="ImageIO.framework" weak="true" />
@@ -149,6 +165,15 @@
              <string></string>
          </config-file>
                   
+=======
+ 	     <source-file src="src/ios/CDVJpegHeaderWriter.m" />
+ 	     <header-file src="src/ios/CDVExif.h" />
+ 	     <framework src="ImageIO.framework" weak="true" />
+ 	     <framework src="CoreLocation.framework" />
+ 	     <framework src="CoreGraphics.framework" />
+ 	     <framework src="AssetsLibrary.framework" />
+         <framework src="MobileCoreServices.framework" />
+>>>>>>> origin/master
      </platform>
 
     <!-- blackberry10 -->
@@ -159,12 +184,18 @@
         </config-file>
         <config-file target="www/config.xml" parent="/widget/rim:permissions">
           <rim:permit>access_shared</rim:permit>
+<<<<<<< HEAD
           <rim:permit>use_camera</rim:permit>
+=======
+>>>>>>> origin/master
         </config-file>
         <js-module src="www/CameraPopoverHandle.js" name="CameraPopoverHandle">
             <clobbers target="CameraPopoverHandle" />
         </js-module>
+<<<<<<< HEAD
         <asset src="www/blackberry10/assets" target="chrome" />
+=======
+>>>>>>> origin/master
     </platform>
 
      <!-- wp7 -->
@@ -211,6 +242,10 @@
     <!-- windows8 -->
     <platform name="windows8">
 
+<<<<<<< HEAD
+=======
+        <dependency id="org.apache.cordova.file" />
+>>>>>>> origin/master
         <config-file target="package.appxmanifest" parent="/Package/Capabilities">
             <Capability Name="picturesLibrary" />
             <DeviceCapability Name="webcam" />
@@ -218,12 +253,17 @@
         <js-module src="www/CameraPopoverHandle.js" name="CameraPopoverHandle">
             <clobbers target="CameraPopoverHandle" />
         </js-module>
+<<<<<<< HEAD
         <js-module src="src/windows/CameraProxy.js" name="CameraProxy">
+=======
+        <js-module src="src/windows8/CameraProxy.js" name="CameraProxy">
+>>>>>>> origin/master
             <merges target="" />
         </js-module>
 
     </platform>
 
+<<<<<<< HEAD
     <!-- browser -->
     <platform name="browser">
         <config-file target="config.xml" parent="/*">
@@ -261,4 +301,6 @@
 
 
 
+=======
+>>>>>>> origin/master
 </plugin>

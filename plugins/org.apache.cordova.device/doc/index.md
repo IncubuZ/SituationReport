@@ -35,6 +35,10 @@ Although the object is in the global scope, it is not available until after the 
 
 - device.cordova
 - device.model
+<<<<<<< HEAD
+=======
+- device.name
+>>>>>>> origin/master
 - device.platform
 - device.uuid
 - device.version
@@ -48,7 +52,10 @@ Get the version of Cordova running on the device.
 - Amazon Fire OS
 - Android
 - BlackBerry 10
+<<<<<<< HEAD
 - Browser
+=======
+>>>>>>> origin/master
 - Firefox OS
 - iOS
 - Tizen
@@ -65,7 +72,10 @@ different across versions of the same product.
 
 - Android
 - BlackBerry 10
+<<<<<<< HEAD
 - Browser
+=======
+>>>>>>> origin/master
 - iOS
 - Tizen
 - Windows Phone 7 and 8
@@ -76,8 +86,11 @@ different across versions of the same product.
     // Android:    Nexus One       returns "Passion" (Nexus One code name)
     //             Motorola Droid  returns "voles"
     // BlackBerry: Torch 9800      returns "9800"
+<<<<<<< HEAD
     // Browser:    Google Chrome   returns "Chrome"
     //             Safari          returns "Safari"
+=======
+>>>>>>> origin/master
     // iOS:     for the iPad Mini, returns iPad2,5; iPhone 5 is iPhone 5,1. See http://theiphonewiki.com/wiki/index.php?title=Models
     //
     var model = device.model;
@@ -94,6 +107,13 @@ different across versions of the same product.
 
 - Returns the device model specified by the manufacturer. For example, the Samsung Focus returns `SGH-i917`.
 
+<<<<<<< HEAD
+=======
+## device.name
+
+__WARNING__: `device.name` is deprecated as of version 2.3.0. Use `device.model` instead.
+
+>>>>>>> origin/master
 ## device.platform
 
 Get the device's operating system name.
@@ -104,7 +124,10 @@ Get the device's operating system name.
 
 - Android
 - BlackBerry 10
+<<<<<<< HEAD
 - Browser4
+=======
+>>>>>>> origin/master
 - Firefox OS
 - iOS
 - Tizen
@@ -116,8 +139,11 @@ Get the device's operating system name.
     // Depending on the device, a few examples are:
     //   - "Android"
     //   - "BlackBerry 10"
+<<<<<<< HEAD
     //   - Browser:         returns "MacIntel" on Mac
     //                      returns "Win32" on Windows
+=======
+>>>>>>> origin/master
     //   - "iOS"
     //   - "WinCE"
     //   - "Tizen"
@@ -194,7 +220,10 @@ Get the operating system version.
 
 - Android 2.1+
 - BlackBerry 10
+<<<<<<< HEAD
 - Browser
+=======
+>>>>>>> origin/master
 - iOS
 - Tizen
 - Windows Phone 7 and 8
@@ -208,8 +237,11 @@ Get the operating system version.
     //
     // BlackBerry: Torch 9800 using OS 6.0 would return "6.0.0.600"
     //
+<<<<<<< HEAD
     // Browser:    Returns version number for the browser
     //
+=======
+>>>>>>> origin/master
     // iPhone:     iOS 3.2 returns "3.2"
     //
     // Windows Phone 7: returns current OS version number, ex. on Mango returns 7.10.7720

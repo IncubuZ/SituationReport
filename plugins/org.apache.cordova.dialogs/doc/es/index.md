@@ -35,11 +35,16 @@ Este plugin proporciona acceso a algunos elementos de la interfaz nativa de diá
 
 ## navigator.notification.alert
 
+<<<<<<< HEAD
 Muestra un cuadro de alerta o diálogo personalizado. La mayoría de las implementaciones de Cordova utilizan un cuadro de diálogo nativa para esta característica, pero algunas plataformas utilizan el navegador `alert` la función, que es típicamente menos personalizable.
+=======
+Muestra un cuadro de alerta o cuadro de diálogo personalizado. La mayoría de las implementaciones de Cordova utilizan un cuadro de diálogo nativa para esta característica, pero algunas plataformas utilizan el navegador `alert` la función, que es típicamente menos personalizable.
+>>>>>>> origin/master
 
     navigator.notification.alert(message, alertCallback, [title], [buttonName])
     
 
+<<<<<<< HEAD
 *   **message**: mensaje de diálogo. *(String)*
 
 *   **alertCallback**: Callback para invocar al diálogo de alerta es desestimada. *(Función)*
@@ -47,6 +52,15 @@ Muestra un cuadro de alerta o diálogo personalizado. La mayoría de las impleme
 *   **title**: título de diálogo. *(String)* (Opcional, el valor predeterminado de `Alert`)
 
 *   **buttonName**: nombre del botón. *(String)* (Opcional, por defecto `Aceptar`)
+=======
+*   **mensaje**: mensaje de diálogo. *(String)*
+
+*   **alertCallback**: Callback para invocar al diálogo de alerta es desestimada. *(Función)*
+
+*   **título**: título de diálogo. *(String)* (Opcional, por defecto`Alert`)
+
+*   **buttonName**: nombre del botón. *(String)* (Opcional, por defecto`OK`)
+>>>>>>> origin/master
 
 ### Ejemplo
 
@@ -64,7 +78,11 @@ Muestra un cuadro de alerta o diálogo personalizado. La mayoría de las impleme
 
 ### Plataformas soportadas
 
+<<<<<<< HEAD
 *   Amazon fire OS
+=======
+*   Amazon fuego OS
+>>>>>>> origin/master
 *   Android
 *   BlackBerry 10
 *   Firefox OS
@@ -75,12 +93,20 @@ Muestra un cuadro de alerta o diálogo personalizado. La mayoría de las impleme
 
 ### Windows Phone 7 y 8 rarezas
 
+<<<<<<< HEAD
 *   No hay ninguna alerta del navegador integrado, pero puede enlazar uno proceda a llamar `alert()` en el ámbito global:
+=======
+*   No hay ninguna alerta del navegador integrado, pero puede enlazar uno proceda a llamar a `alert()` en el ámbito global:
+>>>>>>> origin/master
     
         window.alert = navigator.notification.alert;
         
 
+<<<<<<< HEAD
 *   `alert` y `confirm` son non-blocking llamadas, cuyos resultados sólo están disponibles de forma asincrónica.
+=======
+*   Ambos `alert` y `confirm` son no-bloqueo llamadas, cuyos resultados sólo están disponibles de forma asincrónica.
+>>>>>>> origin/master
 
 ### Firefox OS rarezas:
 
@@ -93,6 +119,7 @@ Muestra un cuadro de diálogo de confirmación personalizables.
     navigator.notification.confirm(message, confirmCallback, [title], [buttonLabels])
     
 
+<<<<<<< HEAD
 *   **message**: mensaje de diálogo. *(String)*
 
 *   **confirmCallback**: Callback para invocar con índice de botón pulsado (1, 2 o 3) o cuando el diálogo es despedido sin la presión del botón (0). *(Función)*
@@ -100,12 +127,25 @@ Muestra un cuadro de diálogo de confirmación personalizables.
 *   **title**: título de diálogo. *(String)* (Opcional, por defecto a `confirmar`)
 
 *   **buttonLabels**: matriz de cadenas especificando las etiquetas de botón. *(Matriz)* (Opcional, por defecto [`OK, cancelar`])
+=======
+*   **mensaje**: mensaje de diálogo. *(String)*
+
+*   **confirmCallback**: Callback para invocar con índice del botón pulsado (1, 2 ó 3) o cuando el cuadro de diálogo es despedido sin la presión del botón (0). *(Función)*
+
+*   **título**: título de diálogo. *(String)* (Opcional, por defecto`Confirm`)
+
+*   **buttonLabels**: matriz de cadenas especificando las etiquetas de botón. *(Matriz)* (Opcional, por defecto [ `OK,Cancel` ])
+>>>>>>> origin/master
 
 ### confirmCallback
 
 El `confirmCallback` se ejecuta cuando el usuario presiona uno de los botones en el cuadro de diálogo de confirmación.
 
+<<<<<<< HEAD
 La devolución de llamada toma el argumento `buttonIndex` *(número)*, que es el índice del botón presionado. Tenga en cuenta que el índice utiliza uno basado en la indexación, así que el valor es `1`, `2`, `3`, etc..
+=======
+La devolución de llamada toma el argumento `buttonIndex` *(número)*, que es el índice del botón presionado. Observe que el índice utiliza indexación basada en uno, entonces el valor es `1` , `2` , `3` , etc..
+>>>>>>> origin/master
 
 ### Ejemplo
 
@@ -123,7 +163,11 @@ La devolución de llamada toma el argumento `buttonIndex` *(número)*, que es el
 
 ### Plataformas soportadas
 
+<<<<<<< HEAD
 *   Amazon fire OS
+=======
+*   Amazon fuego OS
+>>>>>>> origin/master
 *   Android
 *   BlackBerry 10
 *   Firefox OS
@@ -134,12 +178,20 @@ La devolución de llamada toma el argumento `buttonIndex` *(número)*, que es el
 
 ### Windows Phone 7 y 8 rarezas
 
+<<<<<<< HEAD
 *   No hay ninguna función de navegador incorporado para `window.confirm`, pero lo puede enlazar mediante la asignación:
+=======
+*   No hay ninguna función de navegador incorporado para `window.confirm` , pero lo puede enlazar mediante la asignación:
+>>>>>>> origin/master
     
         window.confirm = navigator.notification.confirm;
         
 
+<<<<<<< HEAD
 *   Llamadas de `alert` y `confirm` son non-blocking, así que el resultado sólo está disponible de forma asincrónica.
+=======
+*   Llama a `alert` y `confirm` son no-bloqueo, así que el resultado sólo está disponible de forma asincrónica.
+>>>>>>> origin/master
 
 ### Firefox OS rarezas:
 
@@ -152,6 +204,7 @@ Muestra un cuadro de diálogo nativa que es más personalizable que del navegado
     navigator.notification.prompt(message, promptCallback, [title], [buttonLabels], [defaultText])
     
 
+<<<<<<< HEAD
 *   **message**: mensaje de diálogo. *(String)*
 
 *   **promptCallback**: Callback para invocar con índice del botón pulsado (1, 2 ó 3) o cuando el cuadro de diálogo es despedido sin la presión del botón (0). *(Función)*
@@ -159,16 +212,33 @@ Muestra un cuadro de diálogo nativa que es más personalizable que del navegado
 *   **title**: título *(String)* (opcional, por defecto `puntual` de diálogo)
 
 *   **buttonLabels**: matriz de cadenas especificando el botón etiquetas *(Array)* (opcional, por defecto `["OK", "Cancelar"]`)
+=======
+*   **mensaje**: mensaje de diálogo. *(String)*
+
+*   **promptCallback**: Callback para invocar con índice del botón pulsado (1, 2 ó 3) o cuando el cuadro de diálogo es despedido sin la presión del botón (0). *(Función)*
+
+*   **título**: título *(String)* (opcional, por defecto de diálogo`Prompt`)
+
+*   **buttonLabels**: matriz de cadenas especificando botón etiquetas *(Array)* (opcional, por defecto`["OK","Cancel"]`)
+>>>>>>> origin/master
 
 *   **defaultText**: valor de la entrada predeterminada textbox ( `String` ) (opcional, por defecto: cadena vacía)
 
 ### promptCallback
 
+<<<<<<< HEAD
 El `promptCallback` se ejecuta cuando el usuario presiona uno de los botones en el cuadro de diálogo pronto. El objeto de `resultados` pasado a la devolución de llamada contiene las siguientes propiedades:
 
 *   **buttonIndex**: el índice del botón presionado. *(Número)* Tenga en cuenta que el índice utiliza uno basado en la indexación, así que el valor es `1`, `2`, `3`, etc..
 
 *   **input1**: el texto introducido en el cuadro de diálogo pronto. *(String)*
+=======
+El `promptCallback` se ejecuta cuando el usuario presiona uno de los botones del cuadro de diálogo pronto. El `results` objeto que se pasa a la devolución de llamada contiene las siguientes propiedades:
+
+*   **buttonIndex**: el índice del botón presionado. *(Número)* Observe que el índice utiliza indexación basada en uno, entonces el valor es `1` , `2` , `3` , etc..
+
+*   **INPUT1**: el texto introducido en el cuadro de diálogo pronto. *(String)*
+>>>>>>> origin/master
 
 ### Ejemplo
 
@@ -187,7 +257,11 @@ El `promptCallback` se ejecuta cuando el usuario presiona uno de los botones en 
 
 ### Plataformas soportadas
 
+<<<<<<< HEAD
 *   Amazon fire OS
+=======
+*   Amazon fuego OS
+>>>>>>> origin/master
 *   Android
 *   Firefox OS
 *   iOS
@@ -197,7 +271,11 @@ El `promptCallback` se ejecuta cuando el usuario presiona uno de los botones en 
 
 *   Android soporta un máximo de tres botones e ignora nada más.
 
+<<<<<<< HEAD
 *   En Android 3.0 y posteriores, los botones se muestran en orden inverso para dispositivos que utilizan el tema de Holo.
+=======
+*   En Android 3.0 y posteriores, los botones aparecen en orden inverso para dispositivos que utilizan el tema Holo.
+>>>>>>> origin/master
 
 ### Firefox OS rarezas:
 
@@ -205,22 +283,38 @@ Dos nativos de bloqueo `window.prompt()` y no-bloqueo `navigator.notification.pr
 
 ## navigator.notification.beep
 
+<<<<<<< HEAD
 El dispositivo reproduce un sonido sonido.
+=======
+El aparato reproduce un sonido sonido.
+>>>>>>> origin/master
 
     navigator.notification.beep(times);
     
 
+<<<<<<< HEAD
 *   **times**: el número de veces a repetir la señal. *(Número)*
 
 ### Ejemplo
 
     / / Pitido dos veces! 
+=======
+*   **tiempos**: el número de veces a repetir la señal. *(Número)*
+
+### Ejemplo
+
+    // Beep twice!
+>>>>>>> origin/master
     navigator.notification.beep(2);
     
 
 ### Plataformas soportadas
 
+<<<<<<< HEAD
 *   Amazon fire OS
+=======
+*   Amazon fuego OS
+>>>>>>> origin/master
 *   Android
 *   BlackBerry 10
 *   iOS
@@ -234,11 +328,19 @@ El dispositivo reproduce un sonido sonido.
 
 ### Rarezas Android
 
+<<<<<<< HEAD
 *   Android juega el **tono de notificación** especificados en el panel **ajustes de sonido y pantalla** por defecto.
 
 ### Windows Phone 7 y 8 rarezas
 
 *   Se basa en un archivo de sonido genérico de la distribución de Cordova.
+=======
+*   Androide reproduce el **tono de notificación** especificados en el panel **ajustes de sonido y visualización** por defecto.
+
+### Windows Phone 7 y 8 rarezas
+
+*   Se basa en un archivo de sonido genérico de la distribución de Córdoba.
+>>>>>>> origin/master
 
 ### Rarezas Tizen
 

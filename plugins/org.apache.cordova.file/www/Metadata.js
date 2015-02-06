@@ -27,10 +27,17 @@
 var Metadata = function(metadata) {
     if (typeof metadata == "object") {
         this.modificationTime = new Date(metadata.modificationTime);
+<<<<<<< HEAD
         this.size = metadata.size || 0;
     } else if (typeof metadata == "undefined") {
         this.modificationTime = null;
         this.size = 0;
+=======
+        this.size = +(metadata.size);
+    } else if (typeof metadata == "undefined") {
+        this.modificationTime = null;
+        this.size = null;
+>>>>>>> origin/master
     } else {
         /* Backwards compatiblity with platforms that only return a timestamp */
         this.modificationTime = new Date(metadata);

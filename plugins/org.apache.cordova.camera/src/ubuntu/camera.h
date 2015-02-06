@@ -54,6 +54,7 @@ public slots:
 
     void onImageSaved(QString path);
 
+<<<<<<< HEAD
     QString generateLocation(const QString &extension) {
         int i = 1;
         for (;;++i) {
@@ -64,6 +65,8 @@ public slots:
                 return path;
         }
     }
+=======
+>>>>>>> origin/master
 private:
     bool preprocessImage(QString &path);
 

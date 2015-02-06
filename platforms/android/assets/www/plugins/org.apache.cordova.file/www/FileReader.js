@@ -25,7 +25,11 @@ var exec = require('cordova/exec'),
     File = require('./File'),
     FileError = require('./FileError'),
     ProgressEvent = require('./ProgressEvent'),
+<<<<<<< HEAD
     origFileReader = modulemapper.getOriginalSymbol(window, 'FileReader');
+=======
+    origFileReader = modulemapper.getOriginalSymbol(this, 'FileReader');
+>>>>>>> origin/master
 
 /**
  * This class reads the mobile device file system.
@@ -144,9 +148,12 @@ FileReader.prototype.readAsText = function(file, encoding) {
                 return;
             }
 
+<<<<<<< HEAD
             // DONE state
             me._readyState = FileReader.DONE;
 
+=======
+>>>>>>> origin/master
             // Save result
             me._result = r;
 
@@ -155,6 +162,12 @@ FileReader.prototype.readAsText = function(file, encoding) {
                 me.onload(new ProgressEvent("load", {target:me}));
             }
 
+<<<<<<< HEAD
+=======
+            // DONE state
+            me._readyState = FileReader.DONE;
+
+>>>>>>> origin/master
             // If onloadend callback
             if (typeof me.onloadend === "function") {
                 me.onloadend(new ProgressEvent("loadend", {target:me}));

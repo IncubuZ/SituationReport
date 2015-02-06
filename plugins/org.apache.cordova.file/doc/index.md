@@ -19,6 +19,7 @@
 
 # org.apache.cordova.file
 
+<<<<<<< HEAD
 
 This plugin implements a File API allowing read/write access to files residing on the device.
 
@@ -49,6 +50,13 @@ Although in the global scope, it is not available until after the `deviceready` 
         console.log(cordova.file);
     }
 
+=======
+This plugin provides the [HTML5 Filesystem API](http://dev.w3.org/2009/dap/file-system/pub/FileSystem/). For usage, refer
+to HTML5 Rocks' [FileSystem article](http://www.html5rocks.com/en/tutorials/file/filesystem/)
+on the subject. For an overview of other storage options, refer to Cordova's
+[storage guide](http://cordova.apache.org/docs/en/edge/cordova_storage_storage.md.html).
+
+>>>>>>> origin/master
 ## Installation
 
     cordova plugin add org.apache.cordova.file
@@ -57,14 +65,19 @@ Although in the global scope, it is not available until after the `deviceready` 
 
 - Amazon Fire OS
 - Android
+<<<<<<< HEAD
 - BlackBerry 10
 - Firefox OS
+=======
+- BlackBerry 10*
+>>>>>>> origin/master
 - iOS
 - Windows Phone 7 and 8*
 - Windows 8*
 
 \* _These platforms do not support `FileReader.readAsArrayBuffer` nor `FileWriter.write(blob)`._
 
+<<<<<<< HEAD
 ## Where to Store Files
 
 As of v1.2.0, URLs to important file-system directories are provided.
@@ -184,6 +197,8 @@ properties are `null`.
 
 *Note*: When application is deployed to work perimeter, all paths are relative to /accounts/1000-enterprise.
 
+=======
+>>>>>>> origin/master
 ## Android Quirks
 
 ### Android Persistent storage location
@@ -201,29 +216,47 @@ This meant that all Cordova apps could see all of the files available on the
 card.
 
 If the SD card was not available, then previous versions would store data under
+<<<<<<< HEAD
 `/data/data/<packageId>`, which isolates apps from each other, but may still
+=======
+/data/data/<packageId>, which isolates apps from each other, but may still
+>>>>>>> origin/master
 cause data to be shared between users.
 
 It is now possible to choose whether to store files in the internal file
 storage location, or using the previous logic, with a preference in your
+<<<<<<< HEAD
 application's `config.xml` file. To do this, add one of these two lines to
 `config.xml`:
+=======
+application's config.xml file. To do this, add one of these two lines to
+config.xml:
+>>>>>>> origin/master
 
     <preference name="AndroidPersistentFileLocation" value="Internal" />
 
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
 
+<<<<<<< HEAD
 Without this line, the File plugin will use `Compatibility` as the default. If
+=======
+Without this line, the File plugin will use "Compatibility" as the default. If
+>>>>>>> origin/master
 a preference tag is present, and is not one of these values, the application
 will not start.
 
 If your application has previously been shipped to users, using an older (pre-
 1.0) version of this plugin, and has stored files in the persistent filesystem,
+<<<<<<< HEAD
 then you should set the preference to `Compatibility`. Switching the location to
+=======
+then you should set the preference to "Compatibility". Switching the location to
+>>>>>>> origin/master
 "Internal" would mean that existing users who upgrade their application may be
 unable to access their previously-stored files, depending on their device.
 
 If your application is new, or has never previously stored files in the
+<<<<<<< HEAD
 persistent filesystem, then the `Internal` setting is generally recommended.
 
 
@@ -233,6 +266,23 @@ persistent filesystem, then the `Internal` setting is generally recommended.
   files within the root directory will fail. Use one of the other `cordova.file.*`
   properties defined for iOS (only `applicationDirectory` and `applicationStorageDirectory` are
   read-only).
+=======
+persistent filesystem, then the "internal" setting is generally recommended.
+
+## BlackBerry Quirks
+
+`DirectoryEntry.removeRecursively()` may fail with a `ControlledAccessException` in the following cases:
+
+- An app attempts to access a directory created by a previous installation of the app.
+
+> Solution: ensure temporary directories are cleaned manually, or by the application prior to reinstallation.
+
+- If the device is connected by USB.
+
+> Solution: disconnect the USB cable from the device and run again.
+
+## iOS Quirks
+>>>>>>> origin/master
 - `FileReader.readAsText(blob, encoding)`
   - The `encoding` parameter is not supported, and UTF-8 encoding is always in effect.
 
@@ -247,19 +297,29 @@ files, rather than producing complete documents for export, which is the
 intended purpose of the directory.
 
 It is now possible to choose whether to store files in the documents or library
+<<<<<<< HEAD
 directory, with a preference in your application's `config.xml` file. To do this,
 add one of these two lines to `config.xml`:
+=======
+directory, with a preference in your application's config.xml file. To do this,
+add one of these two lines to config.xml:
+>>>>>>> origin/master
 
     <preference name="iosPersistentFileLocation" value="Library" />
 
     <preference name="iosPersistentFileLocation" value="Compatibility" />
 
+<<<<<<< HEAD
 Without this line, the File plugin will use `Compatibility` as the default. If
+=======
+Without this line, the File plugin will use "Compatibility" as the default. If
+>>>>>>> origin/master
 a preference tag is present, and is not one of these values, the application
 will not start.
 
 If your application has previously been shipped to users, using an older (pre-
 1.0) version of this plugin, and has stored files in the persistent filesystem,
+<<<<<<< HEAD
 then you should set the preference to `Compatibility`. Switching the location to
 `Library` would mean that existing users who upgrade their application would be
 unable to access their previously-stored files.
@@ -281,6 +341,14 @@ The following data paths are supported:
 * `dataDirectory` - For persistent app-specific data files.
 * `cacheDirectory` - Cached files that should survive app restarts (Apps should not rely
 on the OS to delete files in here).
+=======
+then you should set the preference to "Compatibility". Switching the location to
+"Library" would mean that existing users who upgrade their application would be
+unable to access their previously-stored files.
+
+If your application is new, or has never previously stored files in the
+persistent filesystem, then the "Library" setting is generally recommended.
+>>>>>>> origin/master
 
 ## Upgrading Notes
 
@@ -303,16 +371,29 @@ object with a `fullPath` of
 
 If your application works with device-absolute-paths, and you previously retrieved those
 paths through the `fullPath` property of `Entry` objects, then you should update your code
+<<<<<<< HEAD
 to use `entry.toURL()` instead.
 
 For backwards compatibility, the `resolveLocalFileSystemURL()` method will accept a
 device-absolute-path, and will return an `Entry` object corresponding to it, as long as that
 file exists within either the `TEMPORARY` or `PERSISTENT` filesystems.
+=======
+to use `entry.toURL()` instead. This method will now return filesystem URLs of the form
+
+    cdvfile://localhost/persistent/path/to/file
+
+which can be used to identify the file uniquely.
+
+For backwards compatibility, the `resolveLocalFileSystemURL()` method will accept a
+device-absolute-path, and will return an `Entry` object corresponding to it, as long as that
+file exists within either the TEMPORARY or PERSISTENT filesystems.
+>>>>>>> origin/master
 
 This has particularly been an issue with the File-Transfer plugin, which previously used
 device-absolute-paths (and can still accept them). It has been updated to work correctly
 with FileSystem URLs, so replacing `entry.fullPath` with `entry.toURL()` should resolve any
 issues getting that plugin to work with files on the device.
+<<<<<<< HEAD
 
 In v1.1.0 the return value of `toURL()` was changed (see [CB-6394] (https://issues.apache.org/jira/browse/CB-6394))
 to return an absolute 'file://' URL. wherever possible. To ensure a 'cdvfile:'-URL you can use `toInternalURL()` now.
@@ -369,3 +450,5 @@ Android also supports a special filesystem named "documents", which represents a
 * `root`: The entire device filesystem
 
 By default, the library and documents directories can be synced to iCloud. You can also request two additional filesystems, `library-nosync` and `documents-nosync`, which represent a special non-synced directory within the `/Library` or `/Documents` filesystem.
+=======
+>>>>>>> origin/master

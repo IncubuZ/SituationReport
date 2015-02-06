@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
        Licensed to the Apache Software Foundation (ASF) under one
        or more contributor license agreements.  See the NOTICE file
@@ -16,6 +17,8 @@
        specific language governing permissions and limitations
        under the License.
  */
+=======
+>>>>>>> origin/master
 package org.apache.cordova.file;
 
 import java.io.ByteArrayInputStream;
@@ -38,9 +41,12 @@ import org.json.JSONObject;
 
 import android.util.Base64;
 import android.net.Uri;
+<<<<<<< HEAD
 import android.content.Context;
 import android.content.Intent;
 import android.app.Activity;
+=======
+>>>>>>> origin/master
 
 public class LocalFilesystem extends Filesystem {
 
@@ -59,7 +65,11 @@ public class LocalFilesystem extends Filesystem {
         if (questionMark >= 0) {
           path = path.substring(0, questionMark);
         }
+<<<<<<< HEAD
 	    if (path.length() > 1 && path.endsWith("/")) {
+=======
+	    if (path.endsWith("/")) {
+>>>>>>> origin/master
 	      path = path.substring(0, path.length()-1);
 	    }
 	    return path;
@@ -99,7 +109,11 @@ public class LocalFilesystem extends Filesystem {
 	    if (isAbsolutePath) {
 	        rawPath = rawPath.substring(1);
 	    }
+<<<<<<< HEAD
 	    ArrayList<String> components = new ArrayList<String>(Arrays.asList(rawPath.split("/+")));
+=======
+	    ArrayList<String> components = new ArrayList<String>(Arrays.asList(rawPath.split("/")));
+>>>>>>> origin/master
 	    for (int index = 0; index < components.size(); ++index) {
 	        if (components.get(index).equals("..")) {
 	            components.remove(index);
@@ -144,7 +158,23 @@ public class LocalFilesystem extends Filesystem {
           throw new IOException();
       }
       try {
+<<<<<<< HEAD
           return LocalFilesystem.makeEntryForURL(inputURL, fp.isDirectory(),  Uri.fromFile(fp).toString());
+=======
+    	  JSONObject entry = new JSONObject();
+    	  entry.put("isFile", fp.isFile());
+    	  entry.put("isDirectory", fp.isDirectory());
+    	  entry.put("name", fp.getName());
+    	  entry.put("fullPath", inputURL.fullPath);
+    	  // The file system can't be specified, as it would lead to an infinite loop.
+    	  // But we can specify the name of the FS, and the rest can be reconstructed
+    	  // in JS.
+    	  entry.put("filesystemName", inputURL.filesystemName);
+    	  // Backwards compatibility
+    	  entry.put("filesystem", "temporary".equals(name) ? 0 : 1);
+    	  entry.put("nativeURL", Uri.fromFile(fp).toString());
+          return entry;
+>>>>>>> origin/master
       } catch (JSONException e) {
     	  throw new IOException();
       }
@@ -305,7 +335,15 @@ public class LocalFilesystem extends Filesystem {
         // This weird test is to determine if we are copying or moving a directory into itself.
         // Copy /sdcard/myDir to /sdcard/myDir-backup is okay but
         // Copy /sdcard/myDir to /sdcard/myDir/backup should throw an INVALID_MODIFICATION_ERR
+<<<<<<< HEAD
         return dest.equals(src) || dest.startsWith(src + File.separator);
+=======
+        if (dest.startsWith(src) && dest.indexOf(File.separator, src.length() - 1) != -1) {
+            return true;
+        }
+
+        return false;
+>>>>>>> origin/master
     }
 
     /**
@@ -578,7 +616,10 @@ public class LocalFilesystem extends Filesystem {
             	// Always close the output
             	out.close();
             }
+<<<<<<< HEAD
             broadcastNewFile(inputURL);
+=======
+>>>>>>> origin/master
         }
         catch (NullPointerException e)
         {
@@ -590,6 +631,7 @@ public class LocalFilesystem extends Filesystem {
         return rawData.length;
 	}
 
+<<<<<<< HEAD
      /**
      * Send broadcast of new file so files appear over MTP
      *
@@ -615,6 +657,8 @@ public class LocalFilesystem extends Filesystem {
         }
     }
 
+=======
+>>>>>>> origin/master
 	@Override
 	public long truncateFileAtURL(LocalFilesystemURL inputURL, long size) throws IOException {
         File file = new File(filesystemPathForURL(inputURL));

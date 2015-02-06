@@ -32,6 +32,7 @@ module.exports = {
 
         var localSettings = Windows.Storage.ApplicationData.current.localSettings;
 
+<<<<<<< HEAD
 	    if (localSettings.values.deviceId) {
 	    	deviceId = localSettings.values.deviceId;
 	    }
@@ -74,9 +75,25 @@ module.exports = {
                 }, 0);
     		});
     	})(this);
+=======
+        if (localSettings.values.deviceId) {
+            deviceId = localSettings.values.deviceId;
+        }
+        else {
+            deviceId = localSettings.values.deviceId = utils.createUUID();
+        }
+
+        setTimeout(function () {
+            win({ platform: "windows8", version: "8", uuid: deviceId, cordova: '0.0.0', model: window.clientInformation.platform });
+        }, 0);
+>>>>>>> origin/master
     }
 
 };
 
+<<<<<<< HEAD
 require("cordova/exec/proxy").add("Device", module.exports);
+=======
+require("cordova/windows8/commandProxy").add("Device", module.exports);
+>>>>>>> origin/master
 

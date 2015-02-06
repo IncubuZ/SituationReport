@@ -19,6 +19,7 @@
  *
 */
 
+<<<<<<< HEAD
 /*
  * FileSystem
  * 
@@ -44,3 +45,11 @@ module.exports = {
     }
 };
 
+=======
+module.exports = function(name, root) {
+    this.name = name || null;
+    if (root) {
+        this.root = root;
+    }
+};
+>>>>>>> origin/master

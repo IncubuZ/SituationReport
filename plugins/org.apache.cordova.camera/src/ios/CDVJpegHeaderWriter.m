@@ -190,7 +190,11 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
     // construct the complete app1 data block
     app1 = [[NSMutableString alloc] initWithFormat: @"%@%04x%@%@%@%@%@",
             app1marker,
+<<<<<<< HEAD
             (unsigned int)(16 + ([exifIFD length]/2) + ([subExifIFD length]/2)) /*16+[exifIFD length]/2*/,
+=======
+            16 + ([exifIFD length]/2) + ([subExifIFD length]/2) /*16+[exifIFD length]/2*/,
+>>>>>>> origin/master
             exifmarker,
             tiffheader,
             ifd0offset,
@@ -268,10 +272,17 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
     }
     
     // calculate IFD0 terminal offset tags, currently ExifSubIFD
+<<<<<<< HEAD
     unsigned int entrycount = (unsigned int)[ifdblock count];
     if (ifd0flag) {
         // 18 accounts for 8769's width + offset to next ifd, 8 accounts for start of header
         NSNumber * offset = [NSNumber numberWithUnsignedInteger:[exifstr length] / 2 + [dbstr length] / 2 + 18+8];
+=======
+    int entrycount = [ifdblock count];
+    if (ifd0flag) {
+        // 18 accounts for 8769's width + offset to next ifd, 8 accounts for start of header
+        NSNumber * offset = [NSNumber numberWithInt:[exifstr length] / 2 + [dbstr length] / 2 + 18+8];
+>>>>>>> origin/master
         
         [self appendExifOffsetTagTo: exifstr
                         withOffset : offset];
@@ -293,7 +304,11 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
         NSNumber * dataformat = [formtemplate objectAtIndex:1];
         NSNumber * components = [formtemplate objectAtIndex:2];
         if([components intValue] == 0) {
+<<<<<<< HEAD
             components = [NSNumber numberWithUnsignedInteger:[data length] * DataTypeToWidth[[dataformat intValue]-1]];
+=======
+            components = [NSNumber numberWithInt: [data length] * DataTypeToWidth[[dataformat intValue]-1]];            
+>>>>>>> origin/master
         }
 
         return [[NSString alloc] initWithFormat: @"%@%@%08x",
@@ -344,7 +359,11 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
                 [datastr appendString:[dataformat objectAtIndex:3]];
             }
             if ([datastr length] < 8) {
+<<<<<<< HEAD
                 NSString * format = [NSString stringWithFormat:@"%%0%dd", (int)(8 - [datastr length])];
+=======
+                NSString * format = [NSString stringWithFormat:@"%%0%dd", 8 - [datastr length]];
+>>>>>>> origin/master
                 [datastr appendFormat:format,0];
             }
             return datastr;
@@ -464,7 +483,11 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
 -(void) expandContinuedFraction: (NSArray*) fractionlist
                   withResultNumerator: (NSNumber**) numerator
                 withResultDenominator: (NSNumber**) denominator {
+<<<<<<< HEAD
     NSUInteger i = 0;
+=======
+    int i = 0;
+>>>>>>> origin/master
     int den = 0;
     int num = 0;
     if ([fractionlist count] == 1) {

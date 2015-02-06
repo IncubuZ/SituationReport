@@ -19,7 +19,10 @@
 package org.apache.cordova.file;
 
 import android.app.Activity;
+<<<<<<< HEAD
 import android.content.Context;
+=======
+>>>>>>> origin/master
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Base64;
@@ -43,8 +46,11 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.HashSet;
+=======
+>>>>>>> origin/master
 
 /**
  * This class provides file and directory services to JavaScript.
@@ -93,6 +99,7 @@ public class FileUtils extends CordovaPlugin {
     	}
     	return null;
     }
+<<<<<<< HEAD
 
     protected String[] getExtraFileSystemsPreference(Activity activity) {
         String fileSystemsStr = activity.getIntent().getStringExtra("androidextrafilesystems");
@@ -146,6 +153,9 @@ public class FileUtils extends CordovaPlugin {
         return availableFileSystems;
     }
 
+=======
+    
+>>>>>>> origin/master
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     	super.initialize(cordova, webView);
@@ -161,9 +171,15 @@ public class FileUtils extends CordovaPlugin {
     	if (location == null) {
     		location = "compatibility";
     	}
+<<<<<<< HEAD
     	tempRoot = activity.getCacheDir().getAbsolutePath();
     	if ("internal".equalsIgnoreCase(location)) {
     		persistentRoot = activity.getFilesDir().getAbsolutePath() + "/files/";
+=======
+    	if ("internal".equalsIgnoreCase(location)) {
+    		persistentRoot = activity.getFilesDir().getAbsolutePath() + "/files/";
+    		tempRoot = activity.getCacheDir().getAbsolutePath();
+>>>>>>> origin/master
     		this.configured = true;
     	} else if ("compatibility".equalsIgnoreCase(location)) {
     		/*
@@ -179,6 +195,10 @@ public class FileUtils extends CordovaPlugin {
     					"/Android/data/" + packageName + "/cache/";
     		} else {
     			persistentRoot = "/data/data/" + packageName;
+<<<<<<< HEAD
+=======
+    			tempRoot = "/data/data/" + packageName + "/cache/";
+>>>>>>> origin/master
     		}
     		this.configured = true;
     	}
@@ -196,7 +216,10 @@ public class FileUtils extends CordovaPlugin {
     		this.registerFilesystem(new LocalFilesystem("persistent", cordova, persistentRoot));
     		this.registerFilesystem(new ContentFilesystem("content", cordova, webView));
 
+<<<<<<< HEAD
             registerExtraFileSystems(getExtraFileSystemsPreference(activity), getAvailableFileSystems(activity));
+=======
+>>>>>>> origin/master
 
     		// Initialize static plugin reference for deprecated getEntry method
     		if (filePlugin == null) {
@@ -345,6 +368,7 @@ public class FileUtils extends CordovaPlugin {
                 }
             }, callbackContext);
         }
+<<<<<<< HEAD
         else if (action.equals("requestAllFileSystems")) {
             threadhelper( new FileOp( ){
                 public void run() throws IOException, JSONException {
@@ -365,6 +389,9 @@ public class FileUtils extends CordovaPlugin {
                     }
             );
         } else if (action.equals("requestFileSystem")) {
+=======
+        else if (action.equals("requestFileSystem")) {
+>>>>>>> origin/master
             final int fstype=args.getInt(0);
             final long size = args.optLong(1);
             threadhelper( new FileOp( ){
@@ -387,7 +414,11 @@ public class FileUtils extends CordovaPlugin {
                 }
             },callbackContext);
         }
+<<<<<<< HEAD
         else if (action.equals("getFileMetadata")) {
+=======
+        else if (action.equals("getMetadata") || action.equals("getFileMetadata")) {
+>>>>>>> origin/master
             final String fname=args.getString(0);
             threadhelper( new FileOp( ){
                 public void run() throws FileNotFoundException, JSONException, MalformedURLException {
@@ -594,10 +625,14 @@ public class FileUtils extends CordovaPlugin {
     	}
     	
 		/* Backwards-compatibility: Check for file:// urls */
+<<<<<<< HEAD
         if (url.startsWith("file:/")) {
             if (!url.startsWith("file://")) {
                 url = "file:///" + url.substring(6);
             }
+=======
+    	if (url.startsWith("file://")) {
+>>>>>>> origin/master
             String decoded = URLDecoder.decode(url, "UTF-8");
     		/* This looks like a file url. Get the path, and see if any handlers recognize it. */
     		String path;
@@ -845,6 +880,7 @@ public class FileUtils extends CordovaPlugin {
         if (rootFs == null) {
             throw new IOException("No filesystem of type requested");        	
         }
+<<<<<<< HEAD
         LocalFilesystemURL rootURL = new LocalFilesystemURL(LocalFilesystemURL.FILESYSTEM_PROTOCOL + "://localhost/"+rootFs.name+"/");
 
         fs.put("name", rootFs.name);
@@ -896,6 +932,13 @@ public class FileUtils extends CordovaPlugin {
         return ret;
     }
 
+=======
+        fs.put("name", rootFs.name);
+        fs.put("root", Filesystem.makeEntryForPath("/", rootFs.name, true));
+        return fs;
+    }
+
+>>>>>>> origin/master
    /**
      * Returns a JSON object representing the given File. Internal APIs should be modified
      * to use URLs instead of raw FS paths wherever possible, when interfacing with this plugin.

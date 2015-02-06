@@ -47,6 +47,7 @@ function onBackbutton(e){
 			   				   function(){console.error("Error launching home intent");});
        }
        else {
+<<<<<<< HEAD
            navigator.app.backHistory();
        }
 	
@@ -56,10 +57,18 @@ function exitApp(){
 	}
 function deviceReady() {
 	 clearCache();
+=======
+           navigator.app.backHistory()
+       }
+	
+	}
+function deviceReady() {
+>>>>>>> origin/master
 	checkPreAuth();
 	document.addEventListener("backbutton", onBackbutton, false);
 	 console.log("navigator.geolocation works well");
 }
+<<<<<<< HEAD
 function clearCache(){
 	var success = function(status) {
             //alert('Message: ' + status);
@@ -75,3 +84,42 @@ function clearCache(){
 	
 	
 	}
+=======
+
+function loadFeed(){
+	
+	var output = $('#contentHome');
+	output.empty();
+	var butt = '<a class="ui-btn ui-mini ui-icon-check ui-btn-icon-left ui-corner-all ui-btn-b activeOnce" href="#" id="loadFeedBtn" data-transition="none" onClick="loadFeed();">loadFeeds</a>';
+			output.append(butt);
+	var url = serviceURL + 'loadFeed.php';
+	$.ajax({
+		url: url,
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		timeout: 10000,
+		success: function(data, status){
+			console.log(status);
+			console.log(data);
+			
+			$.each(data, function(i,item){ 
+				var feed = '<h1>'+item.report_by+'</h1>'
+				+ '<p>'+item.report_id+'<br>'
+				+ '<p>'+item.report_title+'<br>'
+				+ '<p>'+item.report_content+'<br>'
+				+ '<p>'+item.report_date+'<br>'
+				+ '<p>'+item.report_lat+'<br>'
+				+ '<p>'+item.report_long+'<br>'
+				+ '<p>'+item.report_locat+'<br>'
+				+ item.report_imgUrl+'</p>';
+
+				output.append(feed);
+			});
+		},
+		error: function(){
+		   output.text('There was an error loading the data.');
+		}
+	});
+	
+	}
+>>>>>>> origin/master

@@ -28,7 +28,11 @@ Este plugin muestra y esconde una pantalla de bienvenida durante el inicio de la
 
 ## Plataformas soportadas
 
+<<<<<<< HEAD
 *   Amazon fire OS
+=======
+*   Amazon fuego OS
+>>>>>>> origin/master
 *   Android
 *   BlackBerry 10
 *   iOS
@@ -54,14 +58,23 @@ Donde foo es el nombre del archivo splashscreen, preferiblemente un archivo de 9
 
 Despedir a la pantalla de bienvenida.
 
+<<<<<<< HEAD
     Navigator.SplashScreen.Hide();
+=======
+    navigator.splashscreen.hide();
+>>>>>>> origin/master
     
 
 ### BlackBerry 10, WP8, iOS Quirk
 
 El `config.xml` del archivo `AutoHideSplashScreen` la configuración debe ser `false` . Para retrasar oculta la pantalla splash durante dos segundos, agregue un temporizador como la siguiente en el `deviceready` controlador de eventos:
 
+<<<<<<< HEAD
         setTimeout(function() {navigator.splashscreen.hide();
+=======
+        setTimeout(function() {
+            navigator.splashscreen.hide();
+>>>>>>> origin/master
         }, 2000);
     
 
@@ -69,7 +82,11 @@ El `config.xml` del archivo `AutoHideSplashScreen` la configuración debe ser `f
 
 Muestra la pantalla de bienvenida.
 
+<<<<<<< HEAD
     Navigator.SplashScreen.Show();
+=======
+    navigator.splashscreen.show();
+>>>>>>> origin/master
     
 
 La aplicación no se puede llamar `navigator.splashscreen.show()` hasta que haya iniciado la aplicación y el `deviceready` evento ha despedido. Pero puesto que normalmente la pantalla está destinada a ser visible antes de que comience su aplicación, que parecería que el propósito de la pantalla de bienvenida. Proporcionar cierta configuración en `config.xml` automáticamente `show` la pantalla de presentación inmediatamente después de su lanzamiento de la aplicación y antes de ser completamente ha iniciado y recibió el `deviceready` evento. Ver [los iconos y salpicadura pantallas][1] para obtener más información sobre haciendo esta configuración. Por esta razón, es poco probable que necesitas llamar a `navigator.splashscreen.show()` para hacer la pantalla visible para el inicio de la aplicación.

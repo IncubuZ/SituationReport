@@ -95,6 +95,7 @@
 * added documentation for manual tests
 * CB-6965 Added manual tests
 * CB-6965 Port notification tests to test-framework
+<<<<<<< HEAD
 
 ### 0.2.11 (Dec 02, 2014)
 * [CB-7737] lower min height for alert
@@ -110,3 +111,5 @@
 * CB-7414 **BB10** Document callback parameter for `navigator.notification.alert`
 * CB-7700 cordova-plugin-dialogs documentation translation: cordova-plugin-dialogs
 * CB-7571 Bump version of nested plugin to match parent plugin
+=======
+>>>>>>> origin/master

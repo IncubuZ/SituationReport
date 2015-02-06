@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
        Licensed to the Apache Software Foundation (ASF) under one
        or more contributor license agreements.  See the NOTICE file
@@ -16,6 +17,8 @@
        specific language governing permissions and limitations
        under the License.
  */
+=======
+>>>>>>> origin/master
 package org.apache.cordova.file;
 
 import java.util.List;

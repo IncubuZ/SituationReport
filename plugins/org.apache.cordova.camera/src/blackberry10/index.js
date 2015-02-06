@@ -27,6 +27,7 @@ var PictureSourceType = {
         DATA_URL: 0,         // Return base64 encoded string
         FILE_URI: 1,         // Return file uri (content://media/external/images/media/2 for Android)
         NATIVE_URI: 2        // Return native uri (eg. asset-library://... for iOS)
+<<<<<<< HEAD
     },
     savePath = window.qnx.webplatform.getApplication().getEnv("HOME").replace('/data', '') + '/shared/camera/',
     invokeAvailable = true;
@@ -119,6 +120,9 @@ function saveImage(data, success, fail) {
         }, fail);
     }, fail);
 }
+=======
+    };
+>>>>>>> origin/master
 
 function encodeBase64(filePath, callback) {
     var sandbox = window.qnx.webplatform.getController().setFileSystemSandbox, // save original sandbox value
@@ -203,11 +207,15 @@ module.exports = {
 
         switch(sourceType) {
         case PictureSourceType.CAMERA:
+<<<<<<< HEAD
             if (invokeAvailable) {
                 window.qnx.webplatform.getApplication().cards.camera.open("photo", done, cancel, invoked);
             } else {
                 showCameraDialog(done, cancel, fail);
             }
+=======
+            window.qnx.webplatform.getApplication().cards.camera.open("photo", done, cancel, invoked);
+>>>>>>> origin/master
             break;
 
         case PictureSourceType.PHOTOLIBRARY:

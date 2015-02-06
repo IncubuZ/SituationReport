@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
        Licensed to the Apache Software Foundation (ASF) under one
        or more contributor license agreements.  See the NOTICE file
@@ -16,6 +17,8 @@
        specific language governing permissions and limitations
        under the License.
  */
+=======
+>>>>>>> origin/master
 package org.apache.cordova.file;
 
 import java.io.File;
@@ -23,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 
+<<<<<<< HEAD
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
@@ -31,6 +35,11 @@ import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaResourceApi;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.PluginManager;
+=======
+import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CordovaResourceApi;
+import org.apache.cordova.CordovaWebView;
+>>>>>>> origin/master
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,6 +58,7 @@ public class ContentFilesystem extends Filesystem {
 	public ContentFilesystem(String name, CordovaInterface cordova, CordovaWebView webView) {
 		this.name = name;
 		this.cordova = cordova;
+<<<<<<< HEAD
 
 		Class webViewClass = webView.getClass();
 		PluginManager pm = null;
@@ -68,10 +78,14 @@ public class ContentFilesystem extends Filesystem {
 			}
 		}
 		this.resourceApi = new CordovaResourceApi(webView.getContext(), pm);
+=======
+		this.resourceApi = new CordovaResourceApi(webView.getContext(), webView.pluginManager);
+>>>>>>> origin/master
 	}
 	
 	@Override
 	public JSONObject getEntryForLocalURL(LocalFilesystemURL inputURL) throws IOException {
+<<<<<<< HEAD
 	    if ("/".equals(inputURL.fullPath)) {
             try {
                 return LocalFilesystem.makeEntryForURL(inputURL, true, inputURL.URL.toString());
@@ -83,15 +97,23 @@ public class ContentFilesystem extends Filesystem {
 		// Get the cursor to validate that the file exists
 		Cursor cursor = openCursorForURL(inputURL);
 		String filePath = null;
+=======
+		// Get the cursor to validate that the file exists
+		Cursor cursor = openCursorForURL(inputURL);
+>>>>>>> origin/master
 		try {
 			if (cursor == null || !cursor.moveToFirst()) {
 				throw new FileNotFoundException();
 			}
+<<<<<<< HEAD
 			filePath = filesystemPathForCursor(cursor);
+=======
+>>>>>>> origin/master
 		} finally {
 			if (cursor != null)
 				cursor.close();
 		}
+<<<<<<< HEAD
 		if (filePath == null) {
 			filePath = inputURL.URL.toString();
 		} else {
@@ -99,6 +121,10 @@ public class ContentFilesystem extends Filesystem {
 		}
 		try {
 			return makeEntryForPath(inputURL.fullPath, inputURL.filesystemName, false /*fp.isDirectory()*/, filePath);
+=======
+		try {
+			return makeEntryForPath(inputURL.fullPath, inputURL.filesystemName, false /*fp.isDirectory()*/, inputURL.URL.toString());
+>>>>>>> origin/master
 		} catch (JSONException e) {
 			throw new IOException();
 		}

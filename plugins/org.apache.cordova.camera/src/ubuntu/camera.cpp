@@ -38,7 +38,11 @@ function createObject() {                                               \
         component.statusChanged.connect(finishCreation);                \
 }                                                                       \
 function finishCreation() {                                             \
+<<<<<<< HEAD
     CordovaWrapper.global.cameraPluginWidget = component.createObject(root, \
+=======
+    CordovaWrapper.object = component.createObject(root,                \
+>>>>>>> origin/master
         {root: root, cordova: cordova});                                \
 }                                                                       \
 createObject()";
@@ -68,6 +72,7 @@ bool Camera::preprocessImage(QString &path) {
 
     const char *type;
     if (convertToPNG) {
+<<<<<<< HEAD
         path = generateLocation("png");
         type = "png";
     } else {
@@ -77,6 +82,20 @@ bool Camera::preprocessImage(QString &path) {
 
     image.save(path, type, quality);
 
+=======
+        newImage.setFileTemplate("imgXXXXXX.png");
+        type = "png";
+    } else {
+        newImage.setFileTemplate("imgXXXXXX.jpg");
+        type = "jpg";
+    }
+
+    newImage.open();
+    newImage.setAutoRemove(false);
+    image.save(newImage.fileName(), type, quality);
+
+    path = newImage.fileName();
+>>>>>>> origin/master
     oldImage.remove();
 
     return true;
@@ -95,7 +114,11 @@ void Camera::onImageSaved(QString path) {
             cbParams = QString("\"%1\"").arg(content.data());
             image.remove();
         } else {
+<<<<<<< HEAD
             cbParams = CordovaInternal::format(QString("file://localhost") + absolutePath);
+=======
+            cbParams = CordovaInternal::format(QUrl::fromLocalFile(absolutePath).toString());
+>>>>>>> origin/master
         }
     }
 
@@ -133,7 +156,11 @@ void Camera::takePicture(int scId, int ecId, int quality, int destinationType, i
 }
 
 void Camera::cancel() {
+<<<<<<< HEAD
     m_cordova->execQML("CordovaWrapper.global.cameraPluginWidget.destroy()");
+=======
+    m_cordova->execQML("CordovaWrapper.object.destroy()");
+>>>>>>> origin/master
     this->cb(_lastEcId, "canceled");
 
     _lastEcId = _lastScId = 0;

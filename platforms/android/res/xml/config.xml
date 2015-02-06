@@ -5,6 +5,7 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
+<<<<<<< HEAD
     <feature name="Home">
         <param name="android-package" value="org.apache.cordova.home.Home" />
     </feature>
@@ -23,6 +24,18 @@
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
+=======
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Capture">
+        <param name="android-package" value="org.apache.cordova.mediacapture.Capture" />
+    </feature>
+>>>>>>> origin/master
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
@@ -32,6 +45,7 @@
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
     </feature>
+<<<<<<< HEAD
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
         <param name="onload" value="true" />
@@ -41,5 +55,24 @@
     </feature>
     <feature name="Cache">
         <param name="android-package" value="at.modalog.cordova.plugin.cache.Cache" />
+=======
+    <feature name="Home">
+        <param name="android-package" value="org.apache.cordova.home.Home" />
+    </feature>
+    <name>SituationReport</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
+>>>>>>> origin/master
     </feature>
 </widget>
