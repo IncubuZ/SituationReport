@@ -1,19 +1,29 @@
 //localStorage.serviceURL = "http://situationreport.meximas.com/services/";
 var serviceURL = localStorage.serviceURL;
+
 $(document).ready(function() {
 	FastClick.attach(document.body);
-	console.log("FastClickReady");
+	
 	loadingShow("#firstPage");
 	document.addEventListener("deviceready", deviceReady, true);
+	
 	$("#loginPage").on("pagecreate", loginBindEvent);
 	$("#regisPage").on("pagecreate", regisBindEvent);
 	//$("#profilePage").on("pagecreate", getUserDetail);
 	$("#editProfilePage").on("pagecreate", editUserBindEvent);
 	$("#addReportPage").on("pagecreate", addReportBindEvent);
-	loadFeed();
+	$("#editReportPage").on("pagecreate", editReportBindEvent);
+	$("#createGroupPage").on("pagecreate", createGroupBindEvent);
+	$("#homePage").on("pagecreate", function (){checkGroup();loadFeed();});
+	
+	
 	
 });
-
+$("#mapPage").on( "pageshow", function( event, data ){
+    var center = map.getCenter();
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center);
+});
 function checkPreAuth() {
 	console.log("checkPreAuth");
 	if (window.localStorage.username !== undefined && window.localStorage.password !== undefined) {
@@ -47,28 +57,20 @@ function onBackbutton(e){
 			   				   function(){console.error("Error launching home intent");});
        }
        else {
-<<<<<<< HEAD
            navigator.app.backHistory();
        }
 	
 	}
 function exitApp(){
+	clearCache();//
 	navigator.app.exitApp();
 	}
 function deviceReady() {
 	 clearCache();
-=======
-           navigator.app.backHistory()
-       }
-	
-	}
-function deviceReady() {
->>>>>>> origin/master
 	checkPreAuth();
 	document.addEventListener("backbutton", onBackbutton, false);
-	 console.log("navigator.geolocation works well");
+	 console.log("deviceReady");
 }
-<<<<<<< HEAD
 function clearCache(){
 	var success = function(status) {
             //alert('Message: ' + status);
@@ -84,42 +86,65 @@ function clearCache(){
 	
 	
 	}
-=======
-
-function loadFeed(){
 	
-	var output = $('#contentHome');
-	output.empty();
-	var butt = '<a class="ui-btn ui-mini ui-icon-check ui-btn-icon-left ui-corner-all ui-btn-b activeOnce" href="#" id="loadFeedBtn" data-transition="none" onClick="loadFeed();">loadFeeds</a>';
-			output.append(butt);
-	var url = serviceURL + 'loadFeed.php';
-	$.ajax({
-		url: url,
-		dataType: 'jsonp',
-		jsonp: 'jsoncallback',
-		timeout: 10000,
-		success: function(data, status){
-			console.log(status);
-			console.log(data);
+function checkGroup(){
+	
+	/*if (window.localStorage.userBdate==='0000-00-00'){
+	console.log(window.localStorage.userGroup);
+	}*/
+	if (window.localStorage.userGroup==='000000'){
+		$('.disGroupBtn').addClass("ui-state-disabled");
+		//$('#groupAlert').popup( "open" );
+		
+    		if (checkNoGroupAlert() !== true){
+        		  
+				/*$('#groupAlert').popup({positionTo: "origin"});
+				$('#groupAlert').popup("open");*/  
+				$.mobile.changePage("#groupAlertPage");  
+        		//window.localStorage.setItem("firstlaunch", "0");
+    		}
 			
-			$.each(data, function(i,item){ 
-				var feed = '<h1>'+item.report_by+'</h1>'
-				+ '<p>'+item.report_id+'<br>'
-				+ '<p>'+item.report_title+'<br>'
-				+ '<p>'+item.report_content+'<br>'
-				+ '<p>'+item.report_date+'<br>'
-				+ '<p>'+item.report_lat+'<br>'
-				+ '<p>'+item.report_long+'<br>'
-				+ '<p>'+item.report_locat+'<br>'
-				+ item.report_imgUrl+'</p>';
-
-				output.append(feed);
-			});
-		},
-		error: function(){
-		   output.text('There was an error loading the data.');
-		}
-	});
+			
+			
+	console.log(window.localStorage.userGroup);
 	
+	}else{
+		$('.disGroupBtn').removeClass("ui-state-disabled");
+		}
+
+}
+
+	
+	
+/*$(document).on("pageshow", "#homePage", function(){
+    //alert(IsFirstLaunch());
+	
+	
+	
+});*/
+function setNoGroupAlert(){
+	window.localStorage.setItem("noGroupAlert", "0");
 	}
->>>>>>> origin/master
+
+	
+function IsFirstLaunch(){
+    var fl = window.localStorage.getItem("firstlaunch");
+    if (fl && parseInt(fl) == 0){
+        return false;
+    } else {        
+        window.localStorage.setItem("firstlaunch", "0");
+        return true;
+    }
+}
+function checkNoGroupAlert(){
+    			var fl = window.localStorage.getItem("noGroupAlert");
+    			if (fl && parseInt(fl) === 0){
+        				return true;
+    				} else {        
+        				//window.localStorage.setItem("firstlaunch", "0");
+        				return false;
+    		}
+	}
+function testVar(){
+	console.log(localStorage.userGroup);
+	}

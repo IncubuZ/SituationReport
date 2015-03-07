@@ -65,14 +65,8 @@ typedef int CDVFileError;
 @protocol CDVFileSystem
 - (CDVPluginResult *)entryForLocalURI:(CDVFilesystemURL *)url;
 - (CDVPluginResult *)getFileForURL:(CDVFilesystemURL *)baseURI requestedPath:(NSString *)requestedPath options:(NSDictionary *)options;
-<<<<<<< HEAD
 - (CDVPluginResult *)getParentForURL:(CDVFilesystemURL *)localURI;
 - (CDVPluginResult *)setMetadataForURL:(CDVFilesystemURL *)localURI withObject:(NSDictionary *)options;
-=======
-- (CDVPluginResult*)getParentForURL:(CDVFilesystemURL *)localURI;
-- (void)getMetadataForURL:(CDVFilesystemURL *)url callback:(void (^)(CDVPluginResult *))callback;
-- (CDVPluginResult*)setMetadataForURL:(CDVFilesystemURL *)localURI withObject:(NSDictionary *)options;
->>>>>>> origin/master
 - (CDVPluginResult *)removeFileAtURL:(CDVFilesystemURL *)localURI;
 - (CDVPluginResult *)recursiveRemoveFileAtURL:(CDVFilesystemURL *)localURI;
 - (CDVPluginResult *)readEntriesAtURL:(CDVFilesystemURL *)localURI;
@@ -83,10 +77,7 @@ typedef int CDVFileError;
 - (void)getFileMetadataForURL:(CDVFilesystemURL *)localURL callback:(void (^)(CDVPluginResult *))callback;
 
 - (NSDictionary *)makeEntryForLocalURL:(CDVFilesystemURL *)url;
-<<<<<<< HEAD
 - (NSDictionary*)makeEntryForPath:(NSString*)fullPath isDirectory:(BOOL)isDir;
-=======
->>>>>>> origin/master
 
 @property (nonatomic,strong) NSString *name;
 
@@ -123,10 +114,6 @@ typedef int CDVFileError;
 - (void)getDirectory:(CDVInvokedUrlCommand*)command;
 - (void)getFile:(CDVInvokedUrlCommand*)command;
 - (void)getParent:(CDVInvokedUrlCommand*)command;
-<<<<<<< HEAD
-=======
-- (void)getMetadata:(CDVInvokedUrlCommand*)command;
->>>>>>> origin/master
 - (void)removeRecursively:(CDVInvokedUrlCommand*)command;
 - (void)remove:(CDVInvokedUrlCommand*)command;
 - (void)copyTo:(CDVInvokedUrlCommand*)command;

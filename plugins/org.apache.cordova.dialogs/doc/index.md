@@ -19,7 +19,6 @@
 
 # org.apache.cordova.dialogs
 
-<<<<<<< HEAD
 This plugin provides access to some native dialog UI elements
 via a global `navigator.notification` object.
 
@@ -29,9 +28,6 @@ Although the object is attached to the global scoped `navigator`, it is not avai
     function onDeviceReady() {
         console.log(navigator.notification);
     }
-=======
-This plugin provides access to some native dialog UI elements.
->>>>>>> origin/master
 
 ## Installation
 
@@ -84,10 +80,7 @@ function, which is typically less customizable.
 - Tizen
 - Windows Phone 7 and 8
 - Windows 8
-<<<<<<< HEAD
 - Windows
-=======
->>>>>>> origin/master
 
 ### Windows Phone 7 and 8 Quirks
 
@@ -101,12 +94,9 @@ function, which is typically less customizable.
 
 Both native-blocking `window.alert()` and non-blocking `navigator.notification.alert()` are available.
 
-<<<<<<< HEAD
 ### BlackBerry 10 Quirks
 `navigator.notification.alert('text', callback, 'title', 'text')` callback parameter is passed the number 1.
 
-=======
->>>>>>> origin/master
 ## navigator.notification.confirm
 
 Displays a customizable confirmation dialog box.
@@ -154,10 +144,7 @@ indexing, so the value is `1`, `2`, `3`, etc.
 - Tizen
 - Windows Phone 7 and 8
 - Windows 8
-<<<<<<< HEAD
 - Windows
-=======
->>>>>>> origin/master
 
 ### Windows Phone 7 and 8 Quirks
 
@@ -167,15 +154,12 @@ indexing, so the value is `1`, `2`, `3`, etc.
 
 - Calls to `alert` and `confirm` are non-blocking, so the result is only available asynchronously.
 
-<<<<<<< HEAD
 ### Windows Quirks
 
 - On Windows8/8.1 it is not possible to add more than three buttons to MessageDialog instance.
 
 - On Windows Phone 8.1 it's not possible to show dialog with more than two buttons.
 
-=======
->>>>>>> origin/master
 ### Firefox OS Quirks:
 
 Both native-blocking `window.confirm()` and non-blocking `navigator.notification.confirm()` are available.

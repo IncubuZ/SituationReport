@@ -1,8 +1,11 @@
-
+var reportHtml;
 function loadFeed(){
+	clearCache();//
 	loadingShow("#contentHome");
 	var output = $('#feedMiddle');
 	output.empty();
+	$('#feedBottom').empty();
+	$('#feedTop').empty();
 	var url = serviceURL + 'loadFeed.php';
 	$.ajax({
 		url: url,
@@ -28,23 +31,8 @@ function loadFeed(){
 			});*/
 			
 			$.each(data, function(i,item){ 
-			var d = moment();
-			var de = moment(item.report_date, 'YYYY-MM-DD HH:mm:ss', 'th');
-				var reportHtml = '<div class="ui-corner-all custom-corners" id="reportView" data-report-date="'+item.report_date+'" data-report-id="'+item.report_id+'"><div class="ui-bar ui-bar-b"><h3><strong><span id="spNameFeed">' + item.report_realNameBy
-				+ '</span></strong></h3></div><div class="ui-body ui-body-a"><div class="ui-grid-a">'
-				 + '<div class="ui-block-a" id="miniPropicHome">' 
-				 + '<img alt="" height="40" id="imgMiniPropicHome" src="'+serviceURL + "../img/userprofileimage/" + item.report_userImageUrl + "?" + d.format() + '" width="40">' 
-				 + '</div><div class="ui-block-b" id="miniReportdetail">' 
-				 + 'วันที่: <span id="spDateReport">' + de.format('DD MMMM YYYY')
-				 + '</span><br>เวลา: <em><span id="spTimeReport">' + de.format('HH:mm:ss')
-				 + '</span></em></div></div><div class="ui-grid-solo"><b>หัวเรื่อง:</b> <span id="spTitle">' + item.report_title
-				 + '</span><br><b>รายละเอียด:</b> <em><span id="spContent">' + item.report_content
-				 + '</span></em><br><br><img align="center" alt="" id="imgReport" src="' +serviceURL + "../img/reportPic/" + item.report_imgUrl + "?" + d.format()
-				 + '"><b>สถานที่:</b> <em><span id="spLocatReport">' + item.report_locat
-				 + '</span></em><br><img id="imgMapReport" src="http://maps.googleapis.com/maps/api/staticmap?center=' + item.report_lat + "," + item.report_long
-				 + '&zoom=16&size=400x400&maptype=roadmap&markers=color:green%7C' + item.report_lat + "," + item.report_long
-				 + '&sensor=true"></div></div><br>';
-					
+			
+				htmlReport(item);
 				output.append(reportHtml);
 				loadingHide("#contentHome");
 			});
@@ -106,24 +94,7 @@ function loadNewFeedAjax(output,ff,url,lastDiv,lastDivDate,lastDivId){
 		
 		if (!jQuery.isEmptyObject(data)) {
 			$.each(data, function(i,item){ 
-			
-			var d = moment();
-			var de = moment(item.report_date, 'YYYY-MM-DD HH:mm:ss', 'th');
-				var reportHtml = '<div class="ui-corner-all custom-corners" id="reportView" data-report-date="'+item.report_date+'" data-report-id="'+item.report_id+'"><div class="ui-bar ui-bar-b"><h3><strong><span id="spNameFeed">' + item.report_realNameBy
-				+ '</span></strong></h3></div><div class="ui-body ui-body-a"><div class="ui-grid-a">'
-				 + '<div class="ui-block-a" id="miniPropicHome">' 
-				 + '<img alt="" height="40" id="imgMiniPropicHome" src="'+serviceURL + "../img/userprofileimage/" + item.report_userImageUrl + "?" + d.format() + '" width="40">' 
-				 + '</div><div class="ui-block-b" id="miniReportdetail">' 
-				 + 'วันที่: <span id="spDateReport">' + de.format('DD MMMM YYYY')
-				 + '</span><br>เวลา: <em><span id="spTimeReport">' + de.format('HH:mm:ss')
-				 + '</span></em></div></div><div class="ui-grid-solo"><b>หัวเรื่อง:</b> <span id="spTitle">' + item.report_title
-				 + '</span><br><b>รายละเอียด:</b> <em><span id="spContent">' + item.report_content
-				 + '</span></em><br><br><img align="center" alt="" id="imgReport" src="' +serviceURL + "../img/reportPic/" + item.report_imgUrl + "?" + d.format()
-				 + '"><b>สถานที่:</b> <em><span id="spLocatReport">' + item.report_locat
-				 + '</span></em><br><img id="imgMapReport" src="http://maps.googleapis.com/maps/api/staticmap?center=' + item.report_lat + "," + item.report_long
-				 + '&zoom=16&size=400x400&maptype=roadmap&markers=color:green%7C' + item.report_lat + "," + item.report_long
-				 + '&sensor=false"></div></div><br>';
-
+				htmlReport(item);
 				output.prepend(reportHtml);
 			});
 		}else{
@@ -189,24 +160,9 @@ function loadOldFeedAjax(output,ff,url,lastDiv,lastDivDate,lastDivId){
 		
 		if (!jQuery.isEmptyObject(data)) {
 			$.each(data, function(i,item){ 
-			var mapwidth = parseInt($('#imgMapReport').css("width"), 10); // remove 'px' from width value
-			var mapheight = parseInt($('#imgMapReport').css("height"), 10);
-			var d = moment();
-			var de = moment(item.report_date, 'YYYY-MM-DD HH:mm:ss', 'th');
-				var reportHtml = '<div class="ui-corner-all custom-corners" id="reportView" data-report-date="'+item.report_date+'" data-report-id="'+item.report_id+'"><div class="ui-bar ui-bar-b"><h3><strong><span id="spNameFeed">' + item.report_realNameBy
-				+ '</span></strong></h3></div><div class="ui-body ui-body-a"><div class="ui-grid-a">'
-				 + '<div class="ui-block-a" id="miniPropicHome">' 
-				 + '<img alt="" height="40" id="imgMiniPropicHome" src="'+serviceURL + "../img/userprofileimage/" + item.report_userImageUrl + "?" + d.format() + '" width="40">' 
-				 + '</div><div class="ui-block-b" id="miniReportdetail">' 
-				 + 'วันที่: <span id="spDateReport">' + de.format('DD MMMM YYYY')
-				 + '</span><br>เวลา: <em><span id="spTimeReport">' + de.format('HH:mm:ss')
-				 + '</span></em></div></div><div class="ui-grid-solo"><b>หัวเรื่อง:</b> <span id="spTitle">' + item.report_title
-				 + '</span><br><b>รายละเอียด:</b> <em><span id="spContent">' + item.report_content
-				 + '</span></em><br><br><img align="center" alt="" id="imgReport" src="' +serviceURL + "../img/reportPic/" + item.report_imgUrl + "?" + d.format()
-				 + '"><b>สถานที่:</b> <em><span id="spLocatReport">' + item.report_locat
-				 + '</span></em><br><img id="imgMapReport" src="http://maps.googleapis.com/maps/api/staticmap?center=' + item.report_lat + "," + item.report_long
-				 + '&zoom=16&size=400x400&maptype=roadmap&markers=color:green%7C' + item.report_lat + "," + item.report_long
-				 + '&sensor=true"></div></div><br>';
+			//var mapwidth = parseInt($('#imgMapReport').css("width"), 10); // remove 'px' from width value
+			//var mapheight = parseInt($('#imgMapReport').css("height"), 10);
+				htmlReport(item);
 //' + mapwidth + "x" + mapheight + '
 				output.append(reportHtml);
 			});
@@ -221,4 +177,26 @@ function loadOldFeedAjax(output,ff,url,lastDiv,lastDivDate,lastDivId){
 		   output.text('พบข้อผิดพลาดในการโหลดข้อมูล!!');
 		}
 	});
+	}
+	
+	
+function htmlReport(item){
+	var d = moment();
+	var de = moment(item.report_date, 'YYYY-MM-DD HH:mm:ss', 'th');
+	reportHtml = '<div class="ui-corner-all custom-corners" id="reportView" data-report-date="'+item.report_date+'" data-report-id="'+item.report_id+'" data-report-by="'+item.report_by+'"><a href="#otherProfilePage" class="ui-corner-all" id="lnkThisUpro" onClick="getOtherUserDetail(' + item.report_by + ')"><div class="ui-bar ui-bar-b"><h3><strong><span id="spNameFeed">' + item.report_realNameBy
+				+ '</span></strong></h3></div></a><div class="ui-body ui-body-a"><div class="ui-grid-a">'
+				 + '<div class="ui-block-a" id="miniPropicHome">' 
+				 + '<img alt="" height="40" id="imgMiniPropicHome" src="'+serviceURL + "../img/userprofileimage/" + item.report_userImageUrl + "?" + d.format() + '" width="40">' 
+				 + '</div><div class="ui-block-b" id="miniReportdetail">' 
+				 + 'วันที่: <span id="spDateReport">' + de.format('DD MMMM YYYY')
+				 + '</span><br>เวลา: <em><span id="spTimeReport">' + de.format('HH:mm:ss')
+				 + '</span></em></div></div><div class="ui-grid-solo"><b>หัวเรื่อง:</b> <span id="spTitle">' + item.report_title
+				 + '</span><br><b>รายละเอียด:</b> <em><span id="spContent">' + item.report_content
+				 + '</span></em><br><br><a href="#fullImgPage" class="lnkThisImg" onClick="getFullImg('+ "'"+ item.report_imgUrl + "'"+')"><img align="center" alt="" id="imgReport" src="' +serviceURL + "../img/reportPic/" + item.report_imgUrl + "?" + d.format()
+				 + '"></a><b>สถานที่:</b> <em><span id="spLocatReport">' + item.report_locat
+				 + '</span></em><br><a href="#mapPage" id="lnkThisMap" data-ajax="false" onClick="showThisMap('+ item.report_lat + ", " + item.report_long +')"><img id="imgMapReport" src="http://maps.googleapis.com/maps/api/staticmap?center=' + item.report_lat + "," + item.report_long
+				 + '&zoom=16&size=400x400&maptype=roadmap&markers=color:green%7C' + item.report_lat + "," + item.report_long
+				 + '&sensor=true"></a></a></div></div><br>';
+	
+	
 	}

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <!--
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
@@ -18,17 +17,11 @@
   specific language governing permissions and limitations
   under the License.
 -->
-=======
->>>>>>> origin/master
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:android="http://schemas.android.com/apk/res/android"
            id="org.apache.cordova.file"
-<<<<<<< HEAD
       version="1.3.2">
-=======
-      version="1.0.1">
->>>>>>> origin/master
     <name>File</name>
     <description>Cordova File Plugin</description>
     <license>Apache 2.0</license>
@@ -99,11 +92,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <clobbers target="window.ProgressEvent" />
     </js-module>
 
-<<<<<<< HEAD
     <js-module src="www/fileSystems.js" name="fileSystems" />
 
-=======
->>>>>>> origin/master
     <js-module src="www/requestFileSystem.js" name="requestFileSystem">
         <clobbers target="window.requestFileSystem" />
     </js-module>
@@ -140,7 +130,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
         <!-- android specific file apis -->
         <js-module src="www/android/FileSystem.js" name="androidFileSystem">
-<<<<<<< HEAD
             <merges target="FileSystem" />
         </js-module>
         <js-module src="www/fileSystems-roots.js" name="fileSystems-roots">
@@ -149,9 +138,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <js-module src="www/fileSystemPaths.js" name="fileSystemPaths">
             <merges target="cordova" />
             <runs/>
-=======
-            <merges target="window.FileSystem" />
->>>>>>> origin/master
         </js-module>
     </platform>
 
@@ -185,7 +171,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <js-module src="www/android/FileSystem.js" name="androidFileSystem">
             <merges target="window.FileSystem" />
         </js-module>
-<<<<<<< HEAD
         <js-module src="www/fileSystems-roots.js" name="fileSystems-roots">
             <runs/>
         </js-module>
@@ -193,34 +178,21 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <merges target="cordova" />
             <runs/>
         </js-module>
-=======
->>>>>>> origin/master
     </platform>
 
     <!-- ubuntu -->
     <platform name="ubuntu">
         <header-file src="src/ubuntu/file.h" />
         <source-file src="src/ubuntu/file.cpp" />
-<<<<<<< HEAD
         <js-module src="www/ubuntu/FileSystem.js" name="ubuntuFileSystem1">
             <merges target="window.FileSystem" />
-=======
-        <js-module src="www/ubuntu/Entry.js" name="Entry1">
-            <merges target="window.Entry" />
-        </js-module>
-        <js-module src="www/ubuntu/DirectoryEntry.js" name="DirectoryEntry1">
-            <merges target="window.DirectoryEntry" />
->>>>>>> origin/master
         </js-module>
         <js-module src="www/ubuntu/FileWriter.js" name="FileWriter1">
             <merges target="window.FileWriter" />
         </js-module>
-<<<<<<< HEAD
         <js-module src="www/ubuntu/fileSystems-roots.js" name="fileSystems-roots">
             <runs/>
         </js-module>
-=======
->>>>>>> origin/master
     </platform>
 
     <!-- ios -->
@@ -239,7 +211,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <source-file src="src/ios/CDVAssetLibraryFilesystem.m" />
 
         <!-- ios specific file apis -->
-<<<<<<< HEAD
         <js-module src="www/ios/FileSystem.js" name="iosFileSystem">
             <merges target="FileSystem" />
         </js-module>
@@ -251,13 +222,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <js-module src="www/fileSystemPaths.js" name="fileSystemPaths">
             <merges target="cordova" />
             <runs/>
-=======
-        <js-module src="www/ios/Entry.js" name="iosEntry">
-            <merges target="window.Entry" />
-        </js-module>
-        <js-module src="www/ios/FileSystem.js" name="iosFileSystem">
-            <merges target="window.FileSystem" />
->>>>>>> origin/master
         </js-module>
 
         <framework src="AssetsLibrary.framework" />
@@ -303,7 +267,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <config-file target="www/config.xml" parent="/widget">
             <feature name="File" value="File" />
         </config-file>
-<<<<<<< HEAD
         <js-module src="www/blackberry10/FileProxy.js" name="FileProxy" >
             <runs />
         </js-module>
@@ -376,47 +339,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <!-- Firefox OS specific file apis -->
         <js-module src="www/firefoxos/FileSystem.js" name="firefoxFileSystem">
             <merges target="window.FileSystem" />
-=======
-        <js-module src="www/blackberry10/fileUtils.js" name="BB10Utils" />
-        <js-module src="www/blackberry10/DirectoryEntry.js" name="BB10DirectoryEntry">
-            <clobbers target="window.DirectoryEntry" />
-        </js-module>
-        <js-module src="www/blackberry10/DirectoryReader.js" name="BB10DirectoryReader">
-            <clobbers target="window.DirectoryReader" />
-        </js-module>
-        <js-module src="www/blackberry10/Entry.js" name="BB10Entry">
-            <clobbers target="window.Entry" />
-        </js-module>
-        <js-module src="www/blackberry10/File.js" name="BB10File">
-            <clobbers target="window.File" />
-        </js-module>
-        <js-module src="www/blackberry10/FileEntry.js" name="BB10FileEntry">
-            <clobbers target="window.FileEntry" />
-        </js-module>
-        <js-module src="www/blackberry10/FileReader.js" name="BB10FileReader">
-            <clobbers target="window.FileReader" />
-        </js-module>
-        <js-module src="www/blackberry10/FileSystem.js" name="BB10FileSystem">
-            <clobbers target="window.FileSystem" />
-        </js-module>
-        <js-module src="www/blackberry10/FileWriter.js" name="BB10FileWriter">
-            <clobbers target="window.FileWriter" />
-        </js-module>
-        <js-module src="www/blackberry10/requestFileSystem.js" name="BB10requestFileSystem">
-            <clobbers target="window.requestFileSystem" />
-        </js-module>
-        <js-module src="www/blackberry10/resolveLocalFileSystemURI.js" name="BB10resolveLocalFileSystemURI">
-            <clobbers target="window.resolveLocalFileSystemURI" />
-        </js-module>
-
-        <source-file src="src/blackberry10/index.js"></source-file>
-    </platform>
-
-    <!-- windows8 -->
-    <platform name="windows8">
-        <js-module src="src/windows8/FileProxy.js" name="FileProxy">
-            <merges target="" />
->>>>>>> origin/master
         </js-module>
     </platform>
 

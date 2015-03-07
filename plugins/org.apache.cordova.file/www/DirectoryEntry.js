@@ -36,7 +36,6 @@ var argscheck = require('cordova/argscheck'),
  * {FileSystem} filesystem on which the directory resides (readonly)
  */
 var DirectoryEntry = function(name, fullPath, fileSystem, nativeURL) {
-<<<<<<< HEAD
 
     // add trailing slash if it is missing
     if ((fullPath) && !/\/$/.test(fullPath)) {
@@ -47,9 +46,6 @@ var DirectoryEntry = function(name, fullPath, fileSystem, nativeURL) {
         nativeURL += "/";
     }
     DirectoryEntry.__super__.constructor.call(this, false, true, name, fullPath, fileSystem, nativeURL);
-=======
-     DirectoryEntry.__super__.constructor.call(this, false, true, name, fullPath, fileSystem, nativeURL);
->>>>>>> origin/master
 };
 
 utils.extend(DirectoryEntry, Entry);
@@ -58,11 +54,7 @@ utils.extend(DirectoryEntry, Entry);
  * Creates a new DirectoryReader to read entries from this directory
  */
 DirectoryEntry.prototype.createReader = function() {
-<<<<<<< HEAD
     return new DirectoryReader(this.toInternalURL());
-=======
-    return new DirectoryReader(this.toURL());
->>>>>>> origin/master
 };
 
 /**
@@ -83,11 +75,7 @@ DirectoryEntry.prototype.getDirectory = function(path, options, successCallback,
     var fail = errorCallback && function(code) {
         errorCallback(new FileError(code));
     };
-<<<<<<< HEAD
     exec(win, fail, "File", "getDirectory", [this.toInternalURL(), path, options]);
-=======
-    exec(win, fail, "File", "getDirectory", [this.filesystem.__format__(this.fullPath), path, options]);
->>>>>>> origin/master
 };
 
 /**
@@ -101,11 +89,7 @@ DirectoryEntry.prototype.removeRecursively = function(successCallback, errorCall
     var fail = errorCallback && function(code) {
         errorCallback(new FileError(code));
     };
-<<<<<<< HEAD
     exec(successCallback, fail, "File", "removeRecursively", [this.toInternalURL()]);
-=======
-    exec(successCallback, fail, "File", "removeRecursively", [this.filesystem.__format__(this.fullPath)]);
->>>>>>> origin/master
 };
 
 /**
@@ -127,11 +111,7 @@ DirectoryEntry.prototype.getFile = function(path, options, successCallback, erro
     var fail = errorCallback && function(code) {
         errorCallback(new FileError(code));
     };
-<<<<<<< HEAD
     exec(win, fail, "File", "getFile", [this.toInternalURL(), path, options]);
-=======
-    exec(win, fail, "File", "getFile", [this.filesystem.__format__(this.fullPath), path, options]);
->>>>>>> origin/master
 };
 
 module.exports = DirectoryEntry;

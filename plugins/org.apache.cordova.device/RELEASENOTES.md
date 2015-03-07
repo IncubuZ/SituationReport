@@ -55,7 +55,6 @@
 
 ### 0.2.8 (Feb 05, 2014)
 * Tizen support added
-<<<<<<< HEAD
 
 ### 0.2.9 (Apr 17, 2014)
 * CB-5105: [Android, windows8, WP, BlackBerry10] Removed dead code for device.version
@@ -91,5 +90,3 @@
 * CB-5892 - Remove deprecated `window.Settings`
 * CB-7700 cordova-plugin-device documentation translation: cordova-plugin-device
 * CB-7571 Bump version of nested plugin to match parent plugin
-=======
->>>>>>> origin/master

@@ -20,11 +20,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="org.apache.cordova.dialogs.tests"
-<<<<<<< HEAD
     version="0.2.11">
-=======
-    version="0.2.10">
->>>>>>> origin/master
     <name>Cordova Notification Plugin Tests</name>
     <license>Apache 2.0</license>
 

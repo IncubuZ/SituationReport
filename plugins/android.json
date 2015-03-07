@@ -9,7 +9,6 @@
                 "parents": {
                     "/*": [
                         {
-<<<<<<< HEAD
                             "xml": "<feature name=\"Home\"><param name=\"android-package\" value=\"org.apache.cordova.home.Home\" /></feature>",
                             "count": 1
                         },
@@ -19,17 +18,6 @@
                         },
                         {
                             "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
-=======
-                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Capture\"><param name=\"android-package\" value=\"org.apache.cordova.mediacapture.Capture\" /></feature>",
->>>>>>> origin/master
                             "count": 1
                         },
                         {
@@ -45,11 +33,7 @@
                             "count": 1
                         },
                         {
-<<<<<<< HEAD
                             "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
-=======
-                            "xml": "<feature name=\"Home\"><param name=\"android-package\" value=\"org.apache.cordova.home.Home\" /></feature>",
->>>>>>> origin/master
                             "count": 1
                         },
                         {
@@ -57,11 +41,7 @@
                             "count": 1
                         },
                         {
-<<<<<<< HEAD
                             "xml": "<feature name=\"Cache\"><param name=\"android-package\" value=\"at.modalog.cordova.plugin.cache.Cache\" /></feature>",
-=======
-                            "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.GeoBroker\" /></feature>",
->>>>>>> origin/master
                             "count": 1
                         }
                     ]
@@ -72,19 +52,7 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-<<<<<<< HEAD
                             "count": 9
-=======
-                            "count": 10
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.RECORD_VIDEO\" />",
-                            "count": 1
->>>>>>> origin/master
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
@@ -98,18 +66,13 @@
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS\" />",
                             "count": 1
                         }
-<<<<<<< HEAD
                     ],
                     "/manifest": []
-=======
-                    ]
->>>>>>> origin/master
                 }
             }
         }
     },
     "installed_plugins": {
-<<<<<<< HEAD
         "org.apache.cordova.home": {
             "PACKAGE_NAME": "com.project.situationreport"
         },
@@ -117,15 +80,6 @@
             "PACKAGE_NAME": "com.project.situationreport"
         },
         "org.apache.cordova.camera": {
-=======
-        "org.apache.cordova.camera": {
-            "PACKAGE_NAME": "com.project.situationreport"
-        },
-        "org.apache.cordova.file": {
-            "PACKAGE_NAME": "com.project.situationreport"
-        },
-        "org.apache.cordova.media-capture": {
->>>>>>> origin/master
             "PACKAGE_NAME": "com.project.situationreport"
         },
         "org.apache.cordova.device": {
@@ -137,21 +91,13 @@
         "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.project.situationreport"
         },
-<<<<<<< HEAD
         "org.apache.cordova.file": {
-=======
-        "org.apache.cordova.home": {
->>>>>>> origin/master
             "PACKAGE_NAME": "com.project.situationreport"
         },
         "org.apache.cordova.file-transfer": {
             "PACKAGE_NAME": "com.project.situationreport"
         },
-<<<<<<< HEAD
         "at.modalog.cordova.plugin.cache": {
-=======
-        "org.apache.cordova.geolocation": {
->>>>>>> origin/master
             "PACKAGE_NAME": "com.project.situationreport"
         }
     },

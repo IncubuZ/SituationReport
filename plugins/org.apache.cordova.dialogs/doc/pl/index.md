@@ -21,11 +21,7 @@
 
 Ten plugin umożliwia dostęp do niektórych rodzimych okna dialogowego elementy interfejsu użytkownika.
 
-<<<<<<< HEAD
 ## Instalacja
-=======
-## Instalacji
->>>>>>> origin/master
 
     cordova plugin add org.apache.cordova.dialogs
     
@@ -68,15 +64,9 @@ Pokazuje niestandardowe wpisu lub okno dialogowe. Większość implementacji Cor
 
 ### Obsługiwane platformy
 
-<<<<<<< HEAD
 *   Amazon Fire OS
 *   Android
 *   BlackBerry 10
-=======
-*   Amazon ogień OS
-*   Android
-*   Jeżyna 10
->>>>>>> origin/master
 *   Firefox OS
 *   iOS
 *   Tizen
@@ -133,15 +123,9 @@ Wywołania zwrotnego przyjmuje argument `buttonIndex` *(numer)*, który jest ind
 
 ### Obsługiwane platformy
 
-<<<<<<< HEAD
 *   Amazon Fire OS
 *   Android
 *   BlackBerry 10
-=======
-*   Amazon ogień OS
-*   Android
-*   Jeżyna 10
->>>>>>> origin/master
 *   Firefox OS
 *   iOS
 *   Tizen
@@ -203,21 +187,13 @@ Wyświetla okno dialogowe macierzystego, który bardziej niż przeglądarki `pro
 
 ### Obsługiwane platformy
 
-<<<<<<< HEAD
 *   Amazon Fire OS
-=======
-*   Amazon ogień OS
->>>>>>> origin/master
 *   Android
 *   Firefox OS
 *   iOS
 *   Windows Phone 7 i 8
 
-<<<<<<< HEAD
 ### Dziwactwa Androida
-=======
-### Android dziwactwa
->>>>>>> origin/master
 
 *   Android obsługuje maksymalnie trzy przyciski i więcej niż to ignoruje.
 
@@ -244,15 +220,9 @@ Urządzenie odtwarza sygnał ciągły dźwięk.
 
 ### Obsługiwane platformy
 
-<<<<<<< HEAD
 *   Amazon Fire OS
 *   Android
 *   BlackBerry 10
-=======
-*   Amazon ogień OS
-*   Android
-*   Jeżyna 10
->>>>>>> origin/master
 *   iOS
 *   Tizen
 *   Windows Phone 7 i 8
@@ -262,11 +232,7 @@ Urządzenie odtwarza sygnał ciągły dźwięk.
 
 *   Amazon ogień OS gra domyślny **Dźwięk powiadomienia** określone w panelu **ekranu/ustawienia i dźwięk** .
 
-<<<<<<< HEAD
 ### Dziwactwa Androida
-=======
-### Android dziwactwa
->>>>>>> origin/master
 
 *   Android gra domyślnie **dzwonek powiadomienia** określone w panelu **ustawień/dźwięk i wyświetlacz** .
 
@@ -274,11 +240,7 @@ Urządzenie odtwarza sygnał ciągły dźwięk.
 
 *   Opiera się na pliku rodzajowego sygnał z rozkładu Cordova.
 
-<<<<<<< HEAD
 ### Dziwactwa Tizen
-=======
-### Osobliwości Tizen
->>>>>>> origin/master
 
 *   Tizen implementuje dźwięków przez odtwarzania pliku audio za pośrednictwem mediów API.
 

@@ -7,22 +7,14 @@ var globalLocat = null;
 var titleState = false;
 var contentState = false;
 function getCurrentPosition() {
-<<<<<<< HEAD
 		
-=======
->>>>>>> origin/master
 		globalAddReportImageURI = null;
 		globalLatitude = null;
 		globalLongitude = null;
 		globalAccuracy = null;
 		var d = moment();
-<<<<<<< HEAD
 		$('#imgMiniPropic').attr('src', serviceURL + "../img/userprofileimage/" +
 		localStorage.userImageUrl + "?" + d.format());
-=======
-$('#imgMiniPropic').attr('src', serviceURL + "../img/userprofileimage/" +
-			localStorage.userImageUrl + "?" + d.format());
->>>>>>> origin/master
 		validReport();
 		var option = {
 			enableHighAccuracy: true,
@@ -44,15 +36,9 @@ $('#imgMiniPropic').attr('src', serviceURL + "../img/userprofileimage/" +
 			var mapheight = parseInt($('#map').css("height"), 10);
 			$('#map').attr('src',
 				"http://maps.googleapis.com/maps/api/staticmap?center=" + pos.coords.latitude +
-<<<<<<< HEAD
 				"," + pos.coords.longitude + "&zoom=16&size=400x400&maptype=roadmap&markers=color:green%7C" + pos.coords.latitude +
 				"," + pos.coords.longitude + "&sensor=false");
 				//" + mapwidth + "x" + mapheight + "
-=======
-				"," + pos.coords.longitude + "&zoom=13&size=" + mapwidth + "x" +
-				mapheight + "&maptype=roadmap&markers=color:green%7C" + pos.coords.latitude +
-				"," + pos.coords.longitude + "&sensor=false");
->>>>>>> origin/master
 			$('#map').css('visibility', 'visible');
 			$.ajax({
 				url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.coords
@@ -119,10 +105,7 @@ function take_pic() {
 }
 
 function album_pic() {
-<<<<<<< HEAD
 	clearCache();
-=======
->>>>>>> origin/master
 	navigator.camera.getPicture(onPhotoURISuccess, onFail, {
 		quality: 100,
 		destinationType: Camera.DestinationType.FILE_URI,
@@ -260,13 +243,10 @@ function win(r) {
           console.log("Response = " + r.response.toString()+"\n");
           console.log("Sent = " + r.bytesSent.toString()+"\n");
 		  
-<<<<<<< HEAD
           alert("เพิ่มรายงานเรียบร้อยแล้ว!");
-=======
-          alert("Code Slayer!!!");
->>>>>>> origin/master
 		  //$('#imgPropic').attr('src', globalProfileImageURI);
 		  //getUserDetail();
+		  loadFeed();
 		  window.history.back();
 		 loadingHide("#contentAddReport");
 		   

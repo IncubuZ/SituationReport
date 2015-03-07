@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <!--
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
@@ -18,18 +17,12 @@
   specific language governing permissions and limitations
   under the License.
 -->
-=======
->>>>>>> origin/master
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="org.apache.cordova.device"
-<<<<<<< HEAD
     version="0.2.13">
-=======
-    version="0.2.8">
->>>>>>> origin/master
     <name>Device</name>
     <description>Cordova Device Plugin</description>
     <license>Apache 2.0</license>
@@ -152,7 +145,6 @@
         </js-module>
     </platform>
 
-<<<<<<< HEAD
     <!-- windows -->
     <platform name="windows">
         <js-module src="src/windows/DeviceProxy.js" name="DeviceProxy">
@@ -173,6 +165,4 @@
         </js-module>
     </platform>
 
-=======
->>>>>>> origin/master
 </plugin>

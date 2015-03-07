@@ -19,11 +19,7 @@
 #
 -->
 # Release Notes
-<<<<<<< HEAD
  
-=======
-
->>>>>>> origin/master
 ### 0.2.1 (Sept 5, 2013)
 * [CB-4656] Don't add newlines in data urls within readAsDataUrl.
 * [CB-4514] Making DirectoryCopy Recursive
@@ -149,7 +145,6 @@
 * CB-6012 Preserve query strings on cdvfile:// URLs where necessary
 * CB-6010 Test properly for presence of URLforFilesystemPath method
 * CB-5959 Entry.getMetadata should return size attribute
-<<<<<<< HEAD
 
 ### 1.1.0 (Apr 17, 2014)
 * CB-4965: Remove tests from file plugin
@@ -298,5 +293,3 @@
 * CB-7487 **Android** Broadcast file write This allows MTP USB shares to show the file immediately without reboot/manual refresh using 3rd party app.
 * CB-7700 cordova-plugin-file documentation translation: cordova-plugin-file
 * CB-7571 Bump version of nested plugin to match parent plugin
-=======
->>>>>>> origin/master

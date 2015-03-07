@@ -26,11 +26,7 @@ function showDialog(args, dialogType, result) {
     }
 
     if (msg && typeof msg === "string") {
-<<<<<<< HEAD
         msg = msg.replace(/^"|"$/g, "").replace(/\\"/g, '"');
-=======
-        msg = msg.replace(/^"|"$/g, "").replace(/\\"/g, '"').replace(/\\\\/g, '\\');
->>>>>>> origin/master
     } else {
         result.error("message is undefined");
         return;

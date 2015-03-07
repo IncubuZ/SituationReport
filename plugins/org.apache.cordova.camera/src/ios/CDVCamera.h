@@ -55,14 +55,9 @@ typedef NSUInteger CDVMediaType;
 @property (assign) bool correctOrientation;
 @property (assign) bool saveToPhotoAlbum;
 @property (assign) bool cropToSize;
-<<<<<<< HEAD
 @property (strong) UIView* webView;
 @property (assign) BOOL popoverSupported;
 @property (assign) BOOL usesGeolocation;
-=======
-@property (strong) UIWebView* webView;
-@property (assign) BOOL popoverSupported;
->>>>>>> origin/master
 
 @end
 
@@ -90,10 +85,6 @@ typedef NSUInteger CDVMediaType;
  *	quality: integer between 1 and 100
  */
 - (void)takePicture:(CDVInvokedUrlCommand*)command;
-<<<<<<< HEAD
-=======
-- (void)postImage:(UIImage*)anImage withFilename:(NSString*)filename toUrl:(NSURL*)url;
->>>>>>> origin/master
 - (void)cleanup:(CDVInvokedUrlCommand*)command;
 - (void)repositionPopover:(CDVInvokedUrlCommand*)command;
 

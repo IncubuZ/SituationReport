@@ -17,7 +17,6 @@
  * specific language governing permissions and limitations
  * under the License.
  *
-<<<<<<< HEAD
  */
 //example UA String for Firefox OS 
 //Mozilla/5.0 (Mobile; rv:26.0) Gecko/26.0 Firefox/26.0
@@ -71,29 +70,10 @@ module.exports = {
                 platform: 'firefoxos',
                 model: getModel(),
                 version: getVersion(),
-=======
-*/
-
-var firefoxos = require('cordova/platform');
-var cordova = require('cordova');
-
-module.exports = {
-    getDeviceInfo: function(success, error) {
-        setTimeout(function () {
-            success({
-                cordova: firefoxos.cordovaVersion,
-                platform: 'firefoxos',
-                model: null,
-                version: null,
->>>>>>> origin/master
                 uuid: null
             });
         }, 0);
     }
 };
 
-<<<<<<< HEAD
 require("cordova/exec/proxy").add("Device", module.exports);
-=======
-require("cordova/firefoxos/commandProxy").add("Device", module.exports);
->>>>>>> origin/master

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -19,15 +18,12 @@
  * under the License.
  *
 */
-=======
->>>>>>> origin/master
 module.exports = {
     setSandbox : function (success, fail, args, env) {
         require("lib/webview").setSandbox(JSON.parse(decodeURIComponent(args[0])));
         new PluginResult(args, env).ok();
     },
 
-<<<<<<< HEAD
     getHomePath: function (success, fail, args, env) {
         var homeDir = window.qnx.webplatform.getApplication().getEnv("HOME");
         new PluginResult(args, env).ok(homeDir);
@@ -44,16 +40,5 @@ module.exports = {
                 sharedDirectory: homeDir + '/shared/'
             };
         success(paths);
-=======
-    isSandboxed : function (success, fail, args, env) {
-        new PluginResult(args, env).ok(require("lib/webview").getSandbox() === "1");
-    },
-
-    resolveLocalPath : function (success, fail, args, env) {
-        var homeDir = window.qnx.webplatform.getApplication().getEnv("HOME").replace("/data", "/app/native/"),
-            path = homeDir + JSON.parse(decodeURIComponent(args[0])).substring(9);
-        require("lib/webview").setSandbox(false);
-        new PluginResult(args, env).ok(path);
->>>>>>> origin/master
     }
 };

@@ -73,11 +73,7 @@ Zeigt eine benutzerdefinierte Warnung oder Dialogfeld Feld. Die meisten Implemen
 *   Windows Phone 7 und 8
 *   Windows 8
 
-<<<<<<< HEAD
 ### Windows Phone 7 und 8 Eigenarten
-=======
-### Windows Phone 7 und 8 Macken
->>>>>>> origin/master
 
 *   Es gibt keine eingebaute Datenbanksuchroutine-Warnung, aber Sie können binden, wie folgt zu nennen `alert()` im globalen Gültigkeitsbereich:
     
@@ -136,11 +132,7 @@ Der Rückruf dauert das Argument `buttonIndex` *(Anzahl)*, die der Index der Sch
 *   Windows Phone 7 und 8
 *   Windows 8
 
-<<<<<<< HEAD
 ### Windows Phone 7 und 8 Eigenarten
-=======
-### Windows Phone 7 und 8 Macken
->>>>>>> origin/master
 
 *   Es gibt keine integrierte Browser-Funktion für `window.confirm` , aber Sie können es binden, indem Sie zuweisen:
     
@@ -201,11 +193,7 @@ Die `promptCallback` wird ausgeführt, wenn der Benutzer eine der Schaltflächen
 *   iOS
 *   Windows Phone 7 und 8
 
-<<<<<<< HEAD
 ### Android Eigenarten
-=======
-### Android Macken
->>>>>>> origin/master
 
 *   Android unterstützt maximal drei Schaltflächen und mehr als das ignoriert.
 
@@ -244,19 +232,11 @@ Das Gerät spielt einen Signalton sound.
 
 *   Amazon Fire OS spielt die Standardeinstellung **Akustische Benachrichtigung** unter **Einstellungen/Display & Sound** Bereich angegeben.
 
-<<<<<<< HEAD
 ### Android Eigenarten
 
 *   Android spielt die Standardeinstellung **Benachrichtigung Klingelton** unter **Einstellungen/Sound & Display** -Panel angegeben.
 
 ### Windows Phone 7 und 8 Eigenarten
-=======
-### Android Macken
-
-*   Android spielt die Standardeinstellung **Benachrichtigung Klingelton** unter **Einstellungen/Sound & Display** -Panel angegeben.
-
-### Windows Phone 7 und 8 Macken
->>>>>>> origin/master
 
 *   Stützt sich auf eine generische Piepton-Datei aus der Cordova-Distribution.
 

@@ -1,5 +1,4 @@
 /*  
-<<<<<<< HEAD
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
@@ -11,19 +10,6 @@
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-=======
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
-	
-	http://www.apache.org/licenses/LICENSE-2.0
-	
-	Unless required by applicable law or agreed to in writing, software
-	distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and
-	limitations under the License.
->>>>>>> origin/master
 */
 
 using System;
@@ -247,7 +233,6 @@ namespace WPCordovaClassLib.Cordova.Commands
 
             public FileMetadata(string filePath)
             {
-<<<<<<< HEAD
                 if (string.IsNullOrEmpty(filePath))
                 {
                     throw new FileNotFoundException("File doesn't exist");
@@ -292,44 +277,6 @@ namespace WPCordovaClassLib.Cordova.Commands
                             }
                         }
 
-=======
-                using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
-                {
-                    if (string.IsNullOrEmpty(filePath))
-                    {
-                        throw new FileNotFoundException("File doesn't exist");
-                    }
-                    else if (!isoFile.FileExists(filePath))
-                    {
-                        // attempt to get it from the resources
-                        if (filePath.IndexOf("www") == 0)
-                        {
-                            Uri fileUri = new Uri(filePath, UriKind.Relative);
-                            StreamResourceInfo streamInfo = Application.GetResourceStream(fileUri);
-                            if (streamInfo != null)
-                            {
-                                this.Size = streamInfo.Stream.Length;
-                                this.FileName = filePath.Substring(filePath.LastIndexOf("/") + 1);
-                                this.FullPath = filePath;
-                            }
-                        }
-                        else
-                        {
-                            throw new FileNotFoundException("File doesn't exist");
-                        }
-                    }
-                    else
-                    {
-                        //TODO get file size the other way if possible                
-                        using (IsolatedStorageFileStream stream = new IsolatedStorageFileStream(filePath, FileMode.Open, FileAccess.Read, isoFile))
-                        {
-                            this.Size = stream.Length;
-                        }
-                        this.FullPath = filePath;
-                        this.FileName = System.IO.Path.GetFileName(filePath);
-                        this.LastModifiedDate = isoFile.GetLastWriteTime(filePath).DateTime.ToString();
-                    }
->>>>>>> origin/master
                     this.Type = MimeTypeMapper.GetMimeType(this.FileName);
                 }
             }
@@ -961,11 +908,7 @@ namespace WPCordovaClassLib.Cordova.Commands
             string filePath = optStings[0];
             string callbackId = optStings[1];
 
-<<<<<<< HEAD
             if (!string.IsNullOrEmpty(filePath))
-=======
-            if (filePath != null)
->>>>>>> origin/master
             {
                 try
                 {
@@ -984,13 +927,10 @@ namespace WPCordovaClassLib.Cordova.Commands
                     }
                 }
             }
-<<<<<<< HEAD
             else
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR), callbackId);
             }
-=======
->>>>>>> origin/master
         }
 
         /// <summary>
@@ -1573,7 +1513,6 @@ namespace WPCordovaClassLib.Cordova.Commands
             }
         }
 
-<<<<<<< HEAD
         private string RemoveExtraSlash(string path) {
             if (path.StartsWith("//")) {
                 path = path.Remove(0, 1);
@@ -1603,8 +1542,6 @@ namespace WPCordovaClassLib.Cordova.Commands
             return absolutePath;
         }
 
-=======
->>>>>>> origin/master
         private void GetFileOrDirectory(string options, bool getDirectory)
         {
             FileOptions fOptions = new FileOptions();
@@ -1643,21 +1580,13 @@ namespace WPCordovaClassLib.Cordova.Commands
 
                 try
                 {
-<<<<<<< HEAD
                     path = ResolvePath(fOptions.FullPath, fOptions.Path);
-=======
-                    path = Path.Combine(fOptions.FullPath + "/", fOptions.Path);
->>>>>>> origin/master
                 }
                 catch (Exception)
                 {
                     DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, ENCODING_ERR), callbackId);
                     return;
-<<<<<<< HEAD
                 }
-=======
-                }        
->>>>>>> origin/master
 
                 using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                 {
@@ -1675,11 +1604,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 
                         // need to make sure the parent exists
                         // it is an error to create a directory whose immediate parent does not yet exist
-<<<<<<< HEAD
                         // see issue: https://issues.apache.org/jira/browse/CB-339
-=======
-			            // see issue: https://issues.apache.org/jira/browse/CB-339
->>>>>>> origin/master
                         string[] pathParts = path.Split('/');
                         string builtPath = pathParts[0];
                         for (int n = 1; n < pathParts.Length - 1; n++)

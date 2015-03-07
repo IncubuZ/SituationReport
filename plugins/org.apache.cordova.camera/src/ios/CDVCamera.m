@@ -24,10 +24,7 @@
 #import <Cordova/NSDictionary+Extensions.h>
 #import <ImageIO/CGImageProperties.h>
 #import <AssetsLibrary/ALAssetRepresentation.h>
-<<<<<<< HEAD
 #import <AssetsLibrary/AssetsLibrary.h>
-=======
->>>>>>> origin/master
 #import <ImageIO/CGImageSource.h>
 #import <ImageIO/CGImageProperties.h>
 #import <ImageIO/CGImageDestination.h>
@@ -52,7 +49,6 @@ static NSSet* org_apache_cordova_validArrowDirections;
 
 @synthesize hasPendingOperation, pickerController, locationManager;
 
-<<<<<<< HEAD
 
 - (BOOL)usesGeolocation
 {
@@ -60,8 +56,6 @@ static NSSet* org_apache_cordova_validArrowDirections;
     return [(NSNumber*)useGeo boolValue];
 }
 
-=======
->>>>>>> origin/master
 - (BOOL)popoverSupported
 {
     return (NSClassFromString(@"UIPopoverController") != nil) &&
@@ -88,11 +82,7 @@ static NSSet* org_apache_cordova_validArrowDirections;
     NSString* callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
 
-<<<<<<< HEAD
     self.hasPendingOperation = YES;
-=======
-    self.hasPendingOperation = NO;
->>>>>>> origin/master
 
     NSString* sourceTypeString = [arguments objectAtIndex:2];
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera; // default
@@ -102,11 +92,7 @@ static NSSet* org_apache_cordova_validArrowDirections;
 
     bool hasCamera = [UIImagePickerController isSourceTypeAvailable:sourceType];
     if (!hasCamera) {
-<<<<<<< HEAD
         NSLog(@"Camera.getPicture: source type %lu not available.", (unsigned long)sourceType);
-=======
-        NSLog(@"Camera.getPicture: source type %d not available.", sourceType);
->>>>>>> origin/master
         CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"no camera available"];
         [self.commandDelegate sendPluginResult:result callbackId:callbackId];
         return;
@@ -142,10 +128,7 @@ static NSSet* org_apache_cordova_validArrowDirections;
     // we need to capture this state for memory warnings that dealloc this object
     cameraPicker.webView = self.webView;
     cameraPicker.popoverSupported = [self popoverSupported];
-<<<<<<< HEAD
     cameraPicker.usesGeolocation = [self usesGeolocation];
-=======
->>>>>>> origin/master
 
     cameraPicker.correctOrientation = [[arguments objectAtIndex:8] boolValue];
     cameraPicker.saveToPhotoAlbum = [[arguments objectAtIndex:9] boolValue];
@@ -176,21 +159,9 @@ static NSSet* org_apache_cordova_validArrowDirections;
         NSDictionary* options = [command.arguments objectAtIndex:10 withDefault:nil];
         [self displayPopover:options];
     } else {
-<<<<<<< HEAD
         [self.viewController presentViewController:cameraPicker animated:YES completion:nil];
     }
     self.hasPendingOperation = NO;
-=======
-        SEL selector = NSSelectorFromString(@"presentViewController:animated:completion:");
-        if ([self.viewController respondsToSelector:selector]) {
-            [self.viewController presentViewController:cameraPicker animated:YES completion:nil];
-        } else {
-            // deprecated as of iOS >= 6.0
-            [self.viewController presentModalViewController:cameraPicker animated:YES];
-        }
-    }
-    self.hasPendingOperation = YES;
->>>>>>> origin/master
 }
 
 - (void)repositionPopover:(CDVInvokedUrlCommand*)command
@@ -202,17 +173,10 @@ static NSSet* org_apache_cordova_validArrowDirections;
 
 - (void)displayPopover:(NSDictionary*)options
 {
-<<<<<<< HEAD
     NSInteger x = 0;
     NSInteger y = 32;
     NSInteger width = 320;
     NSInteger height = 480;
-=======
-    int x = 0;
-    int y = 32;
-    int width = 320;
-    int height = 480;
->>>>>>> origin/master
     UIPopoverArrowDirection arrowDirection = UIPopoverArrowDirectionAny;
 
     if (options) {
@@ -221,11 +185,7 @@ static NSSet* org_apache_cordova_validArrowDirections;
         width = [options integerValueForKey:@"width" defaultValue:320];
         height = [options integerValueForKey:@"height" defaultValue:480];
         arrowDirection = [options integerValueForKey:@"arrowDir" defaultValue:UIPopoverArrowDirectionAny];
-<<<<<<< HEAD
         if (![org_apache_cordova_validArrowDirections containsObject:[NSNumber numberWithUnsignedInteger:arrowDirection]]) {
-=======
-        if (![org_apache_cordova_validArrowDirections containsObject:[NSNumber numberWithInt:arrowDirection]]) {
->>>>>>> origin/master
             arrowDirection = UIPopoverArrowDirectionAny;
         }
     }
@@ -308,15 +268,7 @@ static NSSet* org_apache_cordova_validArrowDirections;
         cameraPicker.popoverController.delegate = nil;
         cameraPicker.popoverController = nil;
     } else {
-<<<<<<< HEAD
         [[cameraPicker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-=======
-        if ([cameraPicker respondsToSelector:@selector(presentingViewController)]) {
-            [[cameraPicker presentingViewController] dismissModalViewControllerAnimated:YES];
-        } else {
-            [[cameraPicker parentViewController] dismissModalViewControllerAnimated:YES];
-        }
->>>>>>> origin/master
     }
 
     CDVPluginResult* result = nil;
@@ -362,7 +314,6 @@ static NSSet* org_apache_cordova_validArrowDirections;
                 data = UIImageJPEGRepresentation(returnedImage, 1.0);
             } else {
                 data = UIImageJPEGRepresentation(returnedImage, cameraPicker.quality / 100.0f);
-<<<<<<< HEAD
                 
                 if (cameraPicker.usesGeolocation) {
                     NSDictionary *controllerMetadata = [info objectForKey:@"UIImagePickerControllerMediaMetadata"];
@@ -379,19 +330,6 @@ static NSSet* org_apache_cordova_validArrowDirections;
                         [[self locationManager] startUpdatingLocation];
                         return;
                     }
-=======
-
-                NSDictionary *controllerMetadata = [info objectForKey:@"UIImagePickerControllerMediaMetadata"];
-                if (controllerMetadata) {
-                    self.data = data;
-                    self.metadata = [[NSMutableDictionary alloc] init];
-                    
-                    NSMutableDictionary *EXIFDictionary = [[controllerMetadata objectForKey:(NSString *)kCGImagePropertyExifDictionary]mutableCopy];
-                    if (EXIFDictionary)	[self.metadata setObject:EXIFDictionary forKey:(NSString *)kCGImagePropertyExifDictionary];
-                    
-                    [[self locationManager] startUpdatingLocation];
-                    return;
->>>>>>> origin/master
                 }
             }
             
@@ -451,7 +389,6 @@ static NSSet* org_apache_cordova_validArrowDirections;
 {
     CDVCameraPicker* cameraPicker = (CDVCameraPicker*)picker;
 
-<<<<<<< HEAD
     [[cameraPicker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 
     CDVPluginResult* result;
@@ -461,16 +398,6 @@ static NSSet* org_apache_cordova_validArrowDirections;
         result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"has no access to assets"];   // error callback expects string ATM
     }
     
-=======
-    if ([cameraPicker respondsToSelector:@selector(presentingViewController)]) {
-        [[cameraPicker presentingViewController] dismissModalViewControllerAnimated:YES];
-    } else {
-        [[cameraPicker parentViewController] dismissModalViewControllerAnimated:YES];
-    }
-    // popoverControllerDidDismissPopover:(id)popoverController is called if popover is cancelled
-
-    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"no image selected"];   // error callback expects string ATM
->>>>>>> origin/master
     [self.commandDelegate sendPluginResult:result callbackId:cameraPicker.callbackId];
 
     self.hasPendingOperation = NO;
@@ -605,13 +532,10 @@ static NSSet* org_apache_cordova_validArrowDirections;
         scaledSize = CGSizeMake(MIN(width * scaleFactor, targetWidth), MIN(height * scaleFactor, targetHeight));
     }
 
-<<<<<<< HEAD
     // If the pixels are floats, it causes a white line in iOS8 and probably other versions too
     scaledSize.width = (int)scaledSize.width;
     scaledSize.height = (int)scaledSize.height;
     
-=======
->>>>>>> origin/master
     UIGraphicsBeginImageContext(scaledSize); // this will resize
 
     [sourceImage drawInRect:CGRectMake(0, 0, scaledSize.width, scaledSize.height)];
@@ -626,51 +550,6 @@ static NSSet* org_apache_cordova_validArrowDirections;
     return newImage;
 }
 
-<<<<<<< HEAD
-=======
-- (void)postImage:(UIImage*)anImage withFilename:(NSString*)filename toUrl:(NSURL*)url
-{
-    self.hasPendingOperation = YES;
-
-    NSString* boundary = @"----BOUNDARY_IS_I";
-
-    NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
-    [req setHTTPMethod:@"POST"];
-
-    NSString* contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-    [req setValue:contentType forHTTPHeaderField:@"Content-type"];
-
-    NSData* imageData = UIImagePNGRepresentation(anImage);
-
-    // adding the body
-    NSMutableData* postBody = [NSMutableData data];
-
-    // first parameter an image
-    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"upload\"; filename=\"%@\"\r\n", filename] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[@"Content-Type: image/png\r\n\r\n" dataUsingEncoding : NSUTF8StringEncoding]];
-    [postBody appendData:imageData];
-
-    //	// second parameter information
-    //	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    //	[postBody appendData:[@"Content-Disposition: form-data; name=\"some_other_name\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    //	[postBody appendData:[@"some_other_value" dataUsingEncoding:NSUTF8StringEncoding]];
-    //	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r \n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-
-    [req setHTTPBody:postBody];
-
-    NSURLResponse* response;
-    NSError* error;
-    [NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error];
-
-    //  NSData* result = [NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error];
-    //	NSString * resultStr =  [[[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding] autorelease];
-
-    self.hasPendingOperation = NO;
-}
-
-
->>>>>>> origin/master
 - (CLLocationManager *)locationManager {
     
 	if (locationManager != nil) {
@@ -753,11 +632,7 @@ static NSSet* org_apache_cordova_validArrowDirections;
     CDVPluginResult* result = nil;
     
     if (self.metadata) {
-<<<<<<< HEAD
         CGImageSourceRef sourceImage = CGImageSourceCreateWithData((__bridge CFDataRef)self.data, NULL);
-=======
-        CGImageSourceRef sourceImage = CGImageSourceCreateWithData((__bridge_retained CFDataRef)self.data, NULL);
->>>>>>> origin/master
         CFStringRef sourceType = CGImageSourceGetType(sourceImage);
         
         CGImageDestinationRef destinationImage = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)self.data, sourceType, 1, NULL);

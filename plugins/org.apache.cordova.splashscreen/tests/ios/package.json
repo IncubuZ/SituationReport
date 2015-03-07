@@ -8,10 +8,6 @@
         "cordova-ios": "^3.6.0"
     },
     "scripts": {
-<<<<<<< HEAD
         "test": "xcodebuild -scheme CordovaLib && xcodebuild test -scheme CDVSplashScreenLibTests -destination 'platform=iOS Simulator,name=iPhone 5'"
-=======
-        "test": "xcodebuild -scheme CordovaLib && xcodebuild test -scheme CDVSplashScreenLibTests"
->>>>>>> origin/master
     }    
 }

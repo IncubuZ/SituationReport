@@ -71,7 +71,6 @@
 
 ### 0.2.8 (Feb 26, 2014)
 * CB-1826 Catch OOM on gallery image resize
-<<<<<<< HEAD
 
 ### 0.2.9 (Apr 17, 2014)
 * CB-6460: Update license headers
@@ -159,5 +158,3 @@
 * Pass uri to crop instead of pulling the low resolution image out of the intent return (close #43)
 * Add orientation support for PNG to Android (closes #45)
 * CB-7700 cordova-plugin-camera documentation translation: cordova-plugin-camera
-=======
->>>>>>> origin/master

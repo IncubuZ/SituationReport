@@ -33,10 +33,6 @@ import android.provider.Settings;
 public class Device extends CordovaPlugin {
     public static final String TAG = "Device";
 
-<<<<<<< HEAD
-=======
-    public static String cordovaVersion = "dev";              // Cordova version
->>>>>>> origin/master
     public static String platform;                            // Device OS
     public static String uuid;                                // Device UUID
 
@@ -76,10 +72,6 @@ public class Device extends CordovaPlugin {
             r.put("uuid", Device.uuid);
             r.put("version", this.getOSVersion());
             r.put("platform", this.getPlatform());
-<<<<<<< HEAD
-=======
-            r.put("cordova", Device.cordovaVersion);
->>>>>>> origin/master
             r.put("model", this.getModel());
             callbackContext.success(r);
         }
@@ -118,18 +110,6 @@ public class Device extends CordovaPlugin {
         return uuid;
     }
 
-<<<<<<< HEAD
-=======
-    /**
-     * Get the Cordova version.
-     *
-     * @return
-     */
-    public String getCordovaVersion() {
-        return Device.cordovaVersion;
-    }
-
->>>>>>> origin/master
     public String getModel() {
         String model = android.os.Build.MODEL;
         return model;

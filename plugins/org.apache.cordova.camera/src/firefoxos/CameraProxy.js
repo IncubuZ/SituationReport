@@ -48,8 +48,4 @@ module.exports = {
     cleanup: function(){}
 };
 
-<<<<<<< HEAD
 require("cordova/exec/proxy").add("Camera", module.exports);
-=======
-require("cordova/firefoxos/commandProxy").add("Camera", module.exports);
->>>>>>> origin/master

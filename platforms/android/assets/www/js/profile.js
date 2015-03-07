@@ -1,11 +1,8 @@
 var globalProfileImageURI;
 var editState = false;
 function getUserDetail (){
-<<<<<<< HEAD
+		clearCache();//
 		var d = moment();
-=======
-		d = new Date();
->>>>>>> origin/master
 		var gd = "";
 		if(localStorage.userGender === "male"){
 				gd = "ชาย";
@@ -13,11 +10,7 @@ function getUserDetail (){
 					gd = "หญิง";}else{
 						gd = "อื่นๆ";}
 		loadingShow("#contentProfile");
-<<<<<<< HEAD
 		$('#imgPropic').attr('src', serviceURL + "../img/userprofileimage/" + localStorage.userImageUrl +"?"+d.format());
-=======
-		$('#imgPropic').attr('src', serviceURL + "../img/userprofileimage/" + localStorage.userImageUrl +"?"+d.getTime());
->>>>>>> origin/master
 		$('#spNamePro').text(localStorage.userRName + ' ' + localStorage.userSurname);
 	
 		$('#spGenderPro').text(gd);
@@ -30,16 +23,10 @@ function getUserDetail (){
 //////////////////////////////////////////////////////
 
 function getEditUserDetail (){
-<<<<<<< HEAD
 		clearCache();
 		var d = moment();
 		//loadingShow("#contentEditProfile");
 		$('#imgEditPropic').attr('src', serviceURL + "../img/userprofileimage/" + localStorage.userImageUrl+"?"+d.format());
-=======
-		d = new Date();
-		loadingShow("#contentEditProfile");
-		$('#imgEditPropic').attr('src', serviceURL + "../img/userprofileimage/" + localStorage.userImageUrl+"?"+d.getTime());
->>>>>>> origin/master
 		$('#nameEditInput').val(localStorage.userRName);
 		$('#surnameEditInput').val(localStorage.userSurname);
 		var gen = $('#genderEditSelect');
@@ -48,11 +35,7 @@ function getEditUserDetail (){
 		
 		$('#genderEditSelect').val(localStorage.userGender);
 		$('#emailEditInput').val(localStorage.userEmail);
-<<<<<<< HEAD
 		//loadingHide("#contentEditProfile");
-=======
-		loadingHide("#contentEditProfile");
->>>>>>> origin/master
 		$('#editBDate').combodate({
         value: moment(localStorage.userBdate, 'YYYY-MM-DD'),
 		template:'DD MMMM YYYY',
@@ -63,6 +46,7 @@ function getEditUserDetail (){
 
 //////////////////////////////////////////////////////
 function getImage() {
+	clearCache();//
 	// $('#cameraImage').css('visibility', 'hidden');
           // Retrieve image file location from specified source
           navigator.camera.getPicture(getImageSuccess, function(message) {
@@ -71,17 +55,10 @@ function getImage() {
                       quality : 100,
                       destinationType : navigator.camera.DestinationType.FILE_URI,
                       sourceType : navigator.camera.PictureSourceType.PHOTOLIBRARY,
-<<<<<<< HEAD
 					  targetWidth: 130,
         			  targetHeight: 130,
 					  correctOrientation: 1,
 					  saveToPhotoAlbum: 0,
-=======
-					  targetWidth: 320,
-        			  targetHeight: 320,
-					  correctOrientation: 1,
-					  saveToPhotoAlbum: 1,
->>>>>>> origin/master
         			  allowEdit: 1
 					 
 					 
@@ -91,23 +68,16 @@ function getImage() {
       }
 //////////////////////////////////////////////////////	  
 function takeImage() {
-	
+	clearCache();//
     navigator.camera.getPicture(getImageSuccess, function(message) {
                       alert('get picture failed');
                   }, {
         quality: 100,
         destinationType: Camera.DestinationType.FILE_URI,
-<<<<<<< HEAD
         targetWidth: 130,
         targetHeight: 130,
         correctOrientation: 1,
 		saveToPhotoAlbum: 0,
-=======
-        targetWidth: 320,
-        targetHeight: 320,
-        correctOrientation: 1,
-		saveToPhotoAlbum: 1,
->>>>>>> origin/master
         allowEdit: 1
         
     	}
@@ -116,37 +86,22 @@ function takeImage() {
 //////////////////////////////////////////////////////	  
 function getImageSuccess(imageURI){
 	//$("#popupSelectWith").hide();
-<<<<<<< HEAD
 	//window.history.back();
 	globalProfileImageURI = imageURI;
 	$('#imgEditPropic').attr('src', globalProfileImageURI);
 	$('#imgPropic').attr('src', globalProfileImageURI);
 	var d = moment();
-=======
-	window.history.back();
-	globalProfileImageURI = imageURI;
-	$('#imgEditPropic').attr('src', globalProfileImageURI);
-	
->>>>>>> origin/master
 	//var image = document.getElementById('imgEditPropic');
       //  image.src = imageURI;
         //$('#cameraImage').css('visibility', 'visible');
 		//globalImageURI = imageURI;
 		console.log(globalProfileImageURI);
-<<<<<<< HEAD
 		uploadPhotoProfileData(imageURI);
-=======
-		uploadPhotoProfileData(globalProfileImageURI);
->>>>>>> origin/master
 	
 	}
 function uploadPhotoProfileData(imageURI) {
 			
-<<<<<<< HEAD
 		  //loadingShow("#contentEditProfile");
-=======
-		  loadingShow("#contentEditProfile");
->>>>>>> origin/master
           var options = new FileUploadOptions();
           options.fileKey="file";
           options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -160,44 +115,25 @@ function uploadPhotoProfileData(imageURI) {
           options.chunkedMode = false;
 
           var ft = new FileTransfer();
-<<<<<<< HEAD
           ft.upload(imageURI, encodeURI(serviceURL + "updatePicProfile.php"), uploadProPicwin, uploadProPicfail, options);
       }
 //////////////////////////////////////////////////////
 function uploadProPicwin(r) {
-=======
-          ft.upload(imageURI, encodeURI(serviceURL + "updatePicProfile.php"), win, fail, options);
-      }
-//////////////////////////////////////////////////////
-function win(r) {
->>>>>>> origin/master
           console.log("Code = " + r.responseCode.toString()+"\n");
           console.log("Response = " + r.response.toString()+"\n");
           console.log("Sent = " + r.bytesSent.toString()+"\n");
 		  
-<<<<<<< HEAD
           alert("เปลี่ยนรูปโปรไฟล์ เรียบร้อยแล้ว!");
 		  //$('#imgPropic').attr('src', globalProfileImageURI);
 		  getUserDetail();
 		   //loadingHide("#contentEditProfile");
-=======
-          alert("Code Slayer!!!");
-		  //$('#imgPropic').attr('src', globalProfileImageURI);
-		  getUserDetail();
-		   loadingHide("#contentEditProfile");
->>>>>>> origin/master
 		  
 		  //$.mobile.changePage("#profilePage", { changeHash: false });
 		  //$.mobile.changePage( "../resources/us.html", { transition: "slideup", changeHash: false });
       }
 
-<<<<<<< HEAD
       function uploadProPicfail(error) {
 		  //loadingHide("#contentEditProfile");
-=======
-      function fail(error) {
-		  loadingHide("#contentEditProfile");
->>>>>>> origin/master
           alert("An error has occurred: Code = " + error.code);
       }
 //////////////////////////////////////////////////////	 
@@ -403,7 +339,7 @@ function updateBDate (){
 	return false;			
 			
 	}
-	//////////////////////////////////////////////////////	
+//////////////////////////////////////////////////////	
 function updateEmail (){
 	
 	
@@ -493,3 +429,23 @@ function checkEditEmail() {
 	}
 }
 //////////////////////////////////////////////////////////////////////////////
+/*function getOtherUserDetail (){
+		clearCache();//
+		var d = moment();
+		var gd = "";
+		if(localStorage.userGender === "male"){
+				gd = "ชาย";
+				}else if(localStorage.userGender === "female"){
+					gd = "หญิง";}else{
+						gd = "อื่นๆ";}
+		loadingShow("#contentOtherProfile");
+		$('#imgOtherPropic').attr('src', serviceURL + "../img/userprofileimage/" + localStorage.userImageUrl +"?"+d.format());
+		$('#spNameOtherPro').text(localStorage.userRName + ' ' + localStorage.userSurname);
+	
+		$('#spGenderOtherPro').text(gd);
+		$('#spBirthOtherPro').text(moment(localStorage.userBdate, 'YYYY-MM-DD', 'th').format('LL'));
+		$('#spEmailOtherPro').text(localStorage.userEmail);
+		console.log(gd);
+		console.log(localStorage.userBdate);
+		loadingHide("#contentOtherProfile");
+}*/
