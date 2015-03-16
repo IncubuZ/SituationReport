@@ -28,12 +28,13 @@ public class SituationReport extends CordovaActivity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        
+        //super.setIntegerProperty("loadUrlTimeoutValue", 60000);
+        super.setIntegerProperty("splashscreen", R.drawable.splash);
         super.init();
         // Set by <content src="index.html" /> in config.xml
         //super.loadUrl(Config.getStartUrl());
         //super.loadUrl("file:///android_asset/www/index.html");
-        super.setIntegerProperty("splashscreen", R.drawable.splash);
+        super.clearCache();
         super.loadUrl("file:///android_asset/www/index.html", 10000);
     }
 }
